@@ -28,6 +28,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'pipeline',
+
     'ggj14',
     'ggj14.apps.chat',
 )
@@ -63,3 +65,37 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
+
+
+# PIPELINE
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+)
+
+STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
+
+PIPELINE_COMPILERS = ('pipeline.compilers.less.LessCompiler',)
+
+PIPELINE_CSS_COMPRESSOR = None
+PIPELINE_JS_COMPRESSOR = 'pipeline.compressors.slimit.SlimItCompressor'
+
+PIPELINE_DISABLE_WRAPPER = True
+
+PIPELINE_CSS = {
+    'style': {
+        'source_filenames': [
+            'less/style.less',
+        ],
+        'output_filename': 'css/style.min.css',
+    }
+}
+
+PIPELINE_JS = {
+    'script': {
+        'source_filenames': [
+            'js/libs/jquery.js',
+        ],
+        'output_filename': 'js/min/script.js',
+    },
+}

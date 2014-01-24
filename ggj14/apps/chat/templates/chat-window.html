@@ -1,7 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <form>
-    <input type="text" name="input" placholder="chat">
+  <ul id="messages">
+    <li class="msg remote"><span class="nick">user</span> talkin'</li>
+    <li class="msg local"><span class="nick">you</span> talkin'</li>
+    <li class="msg remote"><span class="nick">user</span> talkin'</li>
+    <li class="msg local"><span class="nick">you</span> talkin'</li>
+    <li class="msg remote"><span class="nick">user</span> talkin'</li>
+    <li class="msg local"><span class="nick">you</span> talkin'</li>
+    <li class="msg remote"><span class="nick">user</span> talkin'</li>
+    <li class="msg local"><span class="nick">you</span> talkin'</li>
+  </ul>
+
+  <form id="input">
+    <input type="text" name="input" placholder="say something">
   </form>
 {% endblock %}

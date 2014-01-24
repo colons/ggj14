@@ -1,9 +1,13 @@
+{% load compressed static %}
 <!doctype html>
 <html>
   <head>
     <title>TALKING</title>
+
+    {% compressed_js "script" %}
+    {% compressed_css "style" %}
   </head>
   <body>
     {% block content %}{% endblock %}
   </body>
-  </html>
+</html>
