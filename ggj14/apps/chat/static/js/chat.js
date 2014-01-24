@@ -11,9 +11,9 @@ function showMessage(message) {
   window.scroll(0, $('body').height() + $(window).height());
 }
 
-function bindClientInput() {
+function bindPrompt() {
   var $form = $('form#input');
-  var $input = $($form.find('input'));
+  var $prompt = $($form.find('#prompt'));
 
   $form.submit(function(e) {
     e.preventDefault();
@@ -21,13 +21,29 @@ function bindClientInput() {
     showMessage({
       origin: 'client',
       nick: 'you',
-      content: $input.val()
+      content: $prompt.val()
     });
 
-    $input.val('');
+    $prompt.val('');
+
+    $.ajax({
+      type: 'POST',
+      url: postMessageURL,
+      data: {message: $prompt.val()},
+      success: function(dataString) {
+        var data = $.parseJSON(dataString);
+        setTimeout(function() {
+          console.log(data.message);
+          showMessage(data.message);
+        }, data.delay);
+      },
+      error: function() {
+        // XXX do something
+      }
+    });
   });
 
-  $input.focus();
+  $prompt.focus();
 }
 
 $(function() {
@@ -35,5 +51,5 @@ $(function() {
   templates = {
     msg: templateFromId('msg')
   };
-  bindClientInput();
+  bindPrompt();
 });

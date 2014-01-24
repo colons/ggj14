@@ -7,7 +7,8 @@
   </section>
 
   <form id="input">
-    <input type="text" name="input" placholder="say something">
+    {% csrf_token %}
+    <input type="text" id="prompt" placholder="say something">
   </form>
 
   {% verbatim %}

@@ -21,9 +21,9 @@ body .window ul {
 }
 body .window ul li .nick {
   display: inline-block;
-  width: 5em;
+  width: 12em;
   text-align: right;
-  color: #6dd;
+  color: #d66;
 }
 body .window ul li .nick::before {
   content: '<';
@@ -33,6 +33,9 @@ body .window ul li .nick::after {
 }
 body .window ul li.client {
   opacity: .6;
+}
+body .window ul li.client .nick {
+  color: #6dd;
 }
 body form {
   position: fixed;

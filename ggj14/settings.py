@@ -96,6 +96,7 @@ PIPELINE_JS = {
         'source_filenames': [
             'js/libs/jquery.js',
             'js/libs/handlebars.js',
+            'js/csrf.js',
             'js/chat.js',
         ],
         'output_filename': 'js/min/script.js',
