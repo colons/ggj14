@@ -15,7 +15,7 @@ body {
   height: 100%;
 }
 body .window ul {
-  padding: 1em;
+  padding: 1em 1em 3em;
   list-style: none;
 }
 body .window ul li .nick {

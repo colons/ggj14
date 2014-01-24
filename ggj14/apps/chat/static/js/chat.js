@@ -7,6 +7,7 @@ function templateFromId(id) {
 }
 
 function showMessage(message) {
+  window.scroll(0, $(window).height());
   $channelWindow.append(templates.msg(message));
 }
 
