@@ -7,8 +7,8 @@ function templateFromId(id) {
 }
 
 function showMessage(message) {
-  window.scroll(0, $(window).height());
   $channelWindow.append(templates.msg(message));
+  window.scroll(0, $('body').height() + $(window).height());
 }
 
 function bindClientInput() {
@@ -26,6 +26,8 @@ function bindClientInput() {
 
     $input.val('');
   });
+
+  $input.focus();
 }
 
 $(function() {
