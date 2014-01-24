@@ -1,18 +1,21 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <ul id="messages">
-    <li class="msg remote"><span class="nick">user</span> talkin'</li>
-    <li class="msg local"><span class="nick">you</span> talkin'</li>
-    <li class="msg remote"><span class="nick">user</span> talkin'</li>
-    <li class="msg local"><span class="nick">you</span> talkin'</li>
-    <li class="msg remote"><span class="nick">user</span> talkin'</li>
-    <li class="msg local"><span class="nick">you</span> talkin'</li>
-    <li class="msg remote"><span class="nick">user</span> talkin'</li>
-    <li class="msg local"><span class="nick">you</span> talkin'</li>
-  </ul>
+  <section class="window" id="channel">
+    <ul>
+    </ul>
+  </section>
 
   <form id="input">
     <input type="text" name="input" placholder="say something">
   </form>
+
+  {% verbatim %}
+    <script id="msg" type="text/x-handlebars-template">
+      <li class="msg {{origin}}">
+        <span class="nick">{{nick}}</span>
+        <span class="content">{{content}}</span>
+      </li>
+    </script>
+  {% endverbatim %}
 {% endblock %}

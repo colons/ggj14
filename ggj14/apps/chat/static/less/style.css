@@ -14,22 +14,22 @@ html {
 body {
   height: 100%;
 }
-body #messages {
+body .window ul {
   padding: 1em;
   list-style: none;
 }
-body #messages li .nick {
+body .window ul li .nick {
   display: inline-block;
   width: 5em;
   text-align: right;
 }
-body #messages li .nick::before {
+body .window ul li .nick::before {
   content: '<';
 }
-body #messages li .nick::after {
+body .window ul li .nick::after {
   content: '>';
 }
-body #messages li.local {
+body .window ul li.client {
   opacity: .6;
 }
 body form {
