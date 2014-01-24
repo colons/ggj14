@@ -6,22 +6,31 @@ function templateFromId(id) {
   return Handlebars.compile(source);
 }
 
-$(function() {
-  "use strict";
+function showMessage(message) {
+  $channelWindow.append(templates.msg(message));
+}
 
+function bindClientInput() {
+  var $form = $('form#input');
+  var $input = $($form.find('input'));
+
+  $form.submit(function(e) {
+    e.preventDefault();
+
+    showMessage({
+      origin: 'client',
+      nick: 'you',
+      content: $input.val()
+    });
+
+    $input.val('');
+  });
+}
+
+$(function() {
+  $channelWindow = $('#channel ul');
   templates = {
     msg: templateFromId('msg')
   };
-
-  $channelWindow = $('#channel ul');
-
-  var context = {
-    origin: 'client',
-    content: 'what',
-    nick: 'you'
-  };
-
-  console.log(context);
-  console.log(templates.msg(context));
-  $channelWindow.append(templates.msg(context));
+  bindClientInput();
 });
