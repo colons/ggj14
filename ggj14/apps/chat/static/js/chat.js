@@ -88,7 +88,7 @@ function connect() {
     [10, ""],
     [900, "joined #t('_'t)"],
     [50, "channel topic is: ヽ(`Д´)ノ"],
-    [100, "users: [~phoenix420] [@Anna] [ you]"]  // XXX use actual name of our foil
+    [100, "users: [~phoenix420] [&nicked90] [@colons] [@EuricaeriS] [@okand] [+trenchfoot] [ you]"]  // XXX use actual name of our foil
   ];
   
   $.each(messages, function(i, thing) {
