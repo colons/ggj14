@@ -47,8 +47,11 @@ function bindPrompt() {
         alert('THERE WAS AN ERROR sorry i will handle this better in future');
       }
     });
+
+    $form.focus();
   });
 
+  $form.slideDown();
   $prompt.focus();
 }
 
@@ -77,6 +80,8 @@ function connect() {
       showMessage(templates.status({content: thing[1]}));
     }, ms);
   });
+
+  setTimeout(bindPrompt, ms);
 }
 
 $(function() {
@@ -86,5 +91,4 @@ $(function() {
     status: templateFromId('status')
   };
   connect();
-  bindPrompt();
 });
