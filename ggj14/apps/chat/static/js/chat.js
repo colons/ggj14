@@ -79,7 +79,15 @@ function bindTabs() {
     $this = $(this);
     $tabs.removeClass('active');
     $('.window').removeClass('active');
-    $(document.getElementById($this.attr('data-target'))).addClass('active');
+    $window = $(document.getElementById($this.attr('data-target')));
+    $window.addClass('active');
+
+    if ($window.hasClass('enabled')) {
+      bindPrompt();
+    } else {
+      unbindPrompt();
+    }
+
     $this.addClass('active');
     scrollToBottom();
     $prompt.focus();
@@ -162,7 +170,9 @@ function foilQuit() {
 
 function startPartTwo() {
   $('#tabs').slideDown();
+  $('section.window').removeClass('enabled');
   $('#tabs li[data-target=query]').click();
+  $('section.window#query').addClass('enabled');
   bindPrompt();
 }
 
