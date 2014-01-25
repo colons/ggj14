@@ -3,24 +3,34 @@
 
 # p1 q1
 I have a secret.
+...
+/c Here we go again...
 Do you want to hear it?
-> yes: p1 q2
+> yes: p1 q1b
 > else: try again1 p1 q1
 
 # try again1 p1 q1
+/e lol
 I have a secret.
 Do you want to hear it?
-> yes: p1 q2
+/n ur a secret
+> yes: p1 q1b
 > else: try again2 p1 q1
 
 # try again2 p1 q1
+/t woof
 I have a secret.
 Do you want to hear it?
-> yes: p1 q2
+/o I don't even know why I idle in this channel
+> yes: p1 q1b
 > else: try again3 p1 q1
 
 # try again3 p1 q1
 * kick
+
+# p1 q1b
+Please answer these questions.
+> null: p1 q2
 
 # p1 q2
 Do you prefer day or night?
@@ -29,6 +39,8 @@ Do you prefer day or night?
 > else: try again1 p1 q2
 
 # try again1 p1 q2
+/e Evening
+...
 Do you prefer day or night?
 > day: p1 q3
 > night: p1 q3
@@ -45,6 +57,8 @@ Do you prefer day or night?
 
 # p1 q3
 Do you prefer Coke or Pepsi?
+...
+/n Coke
 > coke: p1 q4
 > pepsi: p1 q4
 > else: try again1 p1 q3
@@ -57,6 +71,7 @@ Do you prefer Coke or Pepsi?
 
 # try again2 p1 q3
 Do you prefer Coke or Pepsi?
+/o Seriously who gives a shit
 > coke: p1 q4
 > pepsi: p1 q4
 > else: try again3 p1 q3
@@ -65,21 +80,32 @@ Do you prefer Coke or Pepsi?
 * kick
 
 # p1 q4
-Do you prefer the sun or the rain?
-> sun: p1 q5
-> rain: p1 q5
+Sing a line from a song that you like.
+...
+Have you done it?
+> yes: p1 q5
+> no: try again1 p1 q4
 > else: try again1 p1 q4
 
 # try again1 p1 q4
-Do you prefer the sun or the rain?
-> sun: p1 q5
-> rain: p1 q5
+Sing a line from a song that you like.
+/c LAAAAAH
+...
+/n AAAAAAAAAAAAAAAAAAH
+...
+Have you done it?
+/e lol
+> yes: p1 q5
+> no: try again2 p1 q4
 > else: try again2 p1 q4
 
 # try again2 p1 q4
-Do you prefer the sun or the rain?
-> sun: p1 q5
-> rain: p1 q5
+Sing a line from a song that you like.
+...
+/o How will you even tell? Seriously...
+Have you done it?
+> yes: p1 q5
+> no: try again3 p1 q4
 > else: try again3 p1 q4
 
 # try again3 p1 q4
@@ -87,18 +113,21 @@ Do you prefer the sun or the rain?
 
 # p1 q5
 Do you prefer dogs or cats?
+/t woof
 > dog: p1 q6
 > cat: p1 q6
 > else: try again1 p1 q5
 
 # try again1 p1 q5
 Do you prefer dogs or cats?
+/t woof
 > dog: p1 q6
 > cat: p1 q6
 > else: try again2 p1 q5
 
 # try again2 p1 q5
 Do you prefer dogs or cats?
+/t woof
 > dog: p1 q6
 > cat: p1 q6
 > else: try again3 p1 q5
@@ -108,24 +137,31 @@ Do you prefer dogs or cats?
 
 # p1 q6
 Do you still want to hear my secret?
-> yes: p2 q1
-> no: p2 q1
+...
+/n is it that your actually really interesting
+...
+/e lol
+...
+/c heh
+> yes: p2
+> no: try again1 p1 q6
 > else: try again1 p1 q6
 
 # try again1 p1 q6
 Do you still want to hear my secret?
-> yes: p2 q1
-> no: p2 q1
+> yes: p2
+> no: try again2 p1 q6
 > else: try again2 p1 q6
 
 # try again2 p1 q6
 Do you still want to hear my secret?
-> yes: p2 q1
-> no: p2 q1
+/o Seriously, shut up.
+> yes: p2
+> no: try again3 p1 q6
 > else: try again3 p1 q6
 
 # try again3 p1 q6
 * kick
 
-# p2 q1
+# p2
 * part2

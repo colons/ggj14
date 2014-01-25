@@ -15,6 +15,8 @@ ALIASES = {
     'greeting': r'hi|hello|sup|hey|ohayo',
     'else': r'.*',
     'coke': 'coke|coca cola',
+    'dog': 'dogs?',
+    'cat': 'cats?',
 }
 
 USERS = {

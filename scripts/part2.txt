@@ -1,8 +1,402 @@
 # initial
-I trust you.
-> else: p3 q1
+Thank you, [user], for humouring me.
+> else: p2 q1
+
+# p2 q1
+However, before I tell you my secret, I need to know a few things.
+I need to know if I can trust you.
+Will you answer my questions truthfully?
+> yes: agree p2 q1
+> no: disagree p2 q1
+> else: try again1 p2 q1
+
+# agree p2 q1
+Thank you. I will begin.
+> null: p2 q2
+
+# disagree p2 q1
+While I appreciate your honesty in this instance, it is imperative that you provide truthful answers.
+I will begin.
+> null: p2 q2
+
+# try again1 p2 q1
+I understand that you may be sceptical of my reasons for asking further questions, but I assure you, it is in your best interests to answer them.
+Will you answer them truthfully?
+> yes: agree p2 q1
+> no: disagree p2 q1
+> else: try again2 p2 q1
+
+# try again2 p2 q1
+I am growing tired of this. 
+[user], don't waste this opportunity.
+Will you answer my questions truthfully?
+> yes: agree p2 q1
+> no: disagree p2 q1
+> else: try again3 p2 q1
+
+# try again3 p2 q1
+* leave
+
+# p2 q2
+First question.
+Is war ever justified?
+> yes: agree p2 q2
+> no: disagree p2 q2
+> else: try again1 p2 q2
+
+# try again1 p2 q2
+These questions are important.
+I need an answer. 
+Is war ever justified?
+> yes: agree p2 q2
+> no: disagree p2 q2
+> else: try again2 p2 q2
+
+# try again2 p2 q2
+Goodbye. 
+* leave
+
+# agree p2 q2
+So would you agree that civilian casualties are sometimes necessary for the greater good?
+> yes: agree agree p2 q2
+> no: agree disagree p2 q2
+> else: try again3 p2 q2
+
+# try again3 p2 q2
+I only need a simple 'yes' or 'no'.
+Would you agree that civilian casualties are sometimes necessary for the greater good?
+> yes: agree agree p2 q2
+> no: agree disagree p2 q2
+> else: try again4 p2 q2
+
+# try again4 p2 q2
+Goodbye. 
+* leave
+
+# disagree p2 q2
+So you would idly watch if a dictator would so easily slaughter his own people?
+> yes: disagree agree p2 q2
+> no: disagree disagree p2 q2
+> else: try again5 p2 q2
+
+# try again5 p2 q2
+I only need a simple 'yes' or 'no'.
+So you would idly watch if a dictator would so easily slaughter his own people?
+> yes: disagree agree p2 q2
+> no: disagree disagree p2 q2
+> else: try again6 p2 q2
+
+# try again6 p2 q2
+Goodbye. 
+* leave
+
+# agree agree p2 q2
+An interesting, if unconventional opinion.
+> null: p2 q3
+
+# agree disagree p2 q2
+You do not seem sure about your answers. Interesting.
+> null: p2 q3
+
+# disagree agree p2 q2
+Anti-war. I appreciate that belief.
+> null: p2 q3
+
+# disagree disagree p2 q2
+An interesting, if unconventional opinion.
+> null: p2 q3
+
+# p2 q3
+Second question.
+Is it more important to punish criminals than it is to rehabilitate them?
+> yes: agree p2 q3
+> no: disagree p2 q3
+> else: try again1 p2 q3
+
+# try again1 p2 q3
+Don't falter now. 
+Should punishing criminals take precedence over their rehabilitation? 
+> yes: agree p2 q3
+> no: disagree p2 q3
+> else: try again2 p2 q3
+
+# try again2 p2 q3
+Goodbye. 
+* leave
+
+# agree p2 q3
+So would you agree that a murderer only deserves the death penalty?
+> yes: agree agree p2 q3
+> no: agree disagree p2 q3
+> else: try again3 p2 q3
+
+# try again3 p2 q3
+This isn't difficult.
+Do murderers only deserve the death penalty?
+> yes: agree agree p2 q3
+> no: agree disagree p2 q3
+> else: try again4 p2 q3
+
+# try again4 p2 q3
+Goodbye. 
+* leave
+
+# disagree p2 q3
+So would you release a murderer even after rehab, even if it causes immense pain to the victim's family?
+> yes: disagree agree p2 q3
+> no: disagree disagree p2 q3
+> else: try again5 p2 q3
+
+# try again5 p2 q3
+This isn't difficult.
+Would you release a murderer even after rehab?
+> yes: disagree agree p2 q3
+> no: disagree disagree p2 q3
+> else: try again6 p2 q3
+
+# try again6 p2 q3
+Goodbye. 
+* leave
+
+# agree agree p2 q3
+An eye for an eye? I can understand that.
+> null: p2 q4
+
+# agree disagree p2 q3
+No capital punishment? A reasonable stance on the subject.
+> null: p2 q4
+
+# disagree agree p2 q3
+So you believe that a criminal can start over? Interesting.
+> null: p2 q4
+
+# disagree disagree p2 q3
+But why rehabilitate a criminal at all if there is no possibility of release?
+> null: p2 q4
+
+# p2 q4
+Third question.
+Does the end always justify the means?
+> yes: agree p2 q4
+> no: disagree p2 q4
+> else: try again1 p2 q4
+
+# try again1 p2 q4
+It's not hard to understand.
+Would you do something bad for the greater good?
+> yes: agree p2 q4
+> no: disagree p2 q4
+> else: try again2 p2 q4
+
+# try again2 p2 q4
+Goodbye. 
+* leave
+
+# agree p2 q4
+So would you sacrifice a life to save two others?
+> yes: agree agree p2 q4
+> no: agree disagree p2 q4
+> else: try again3 p2 q4
+
+# try again3 p2 q4
+A tough situation, sure, but this is merely theoretical. 
+Would you sacrifice a life to save two others?
+> yes: agree agree p2 q4
+> no: agree disagree p2 q4
+> else: try again4 p2 q4
+
+# try again4 p2 q4
+Goodbye. 
+* leave
+
+# disagree p2 q4
+But what if the end benefitted millions of people? Surely that is justification for any cost?
+> yes: disagree agree p2 q4
+> no: disagree disagree p2 q4
+> else: try again5 p2 q4
+
+# try again5 p2 q4
+A tough situation, sure, but this is merely theoretical. 
+What if the end benefitted millions of people?
+> yes: disagree agree p2 q4
+> no: disagree disagree p2 q4
+> else: try again6 p2 q4
+
+# try again6 p2 q4
+Goodbye. 
+* leave
+
+# agree agree p2 q4
+Justification in numbers. A valid opinion. 
+> null: p2 q5
+
+# agree disagree p2 q4
+It would depend on the cost. Reasonable. 
+> null: p2 q5
+
+# disagree agree p2 q4
+Sounds to me that you disagree with the principal but are tempted by the figures.
+> null: p2 q5
+
+# disagree disagree p2 q4
+Incapable of sacrifice. I feel you may change your mind in the correct circumstances.
+> null: p2 q5
+
+# p2 q5
+Fourth question.
+Are there people that do not deserve democracy?
+> yes: agree p2 q5
+> no: disagree p2 q5
+> else: try again1 p2 q5
+
+# try again1 p2 q5
+Maybe some people aren't smart enough.
+Maybe some people don't deserve it.
+Are there people that do not deserve democracy?
+> yes: agree p2 q5
+> no: disagree p2 q5
+> else: try again2 p2 q5
+
+# try again2 p2 q5
+Goodbye. 
+* leave
+
+# agree p2 q5
+So it's fine to block some out of democracy when others knowingly use it to fulfil selfish, short-term interests?
+> yes: agree agree p2 q5
+> no: agree disagree p2 q5
+> else: try again3 p2 q5
+
+# try again3 p2 q5
+Don't deviate now. 
+Answer the question.
+Is it okay to restrict democracy when it is being abused anyway?
+> yes: agree agree p2 q5
+> no: agree disagree p2 q5
+> else: try again4 p2 q5
+
+# try again4 p2 q5
+Goodbye. 
+* leave
+
+# disagree p2 q5
+But what about prisoners who have waived their rights?
+Politicians who act for their own benefit?
+Are there not at least some people that have surrendered their right to democracy?
+> yes: disagree agree p2 q5
+> no: disagree disagree p2 q5
+> else: try again5 p2 q5
+
+# try again5 p2 q5
+Don't waste my time, [user].
+I just need a 'yes' or 'no' answer.  
+Have some people surrendered their right to democracy?
+> yes: disagree agree p2 q5
+> no: disagree disagree p2 q5
+> else: try again6 p2 q5
+
+# try again6 p2 q5
+Goodbye. 
+* leave
+
+# agree agree p2 q5
+Indeed, you have to start somewhere. 
+> null: p2 q6
+
+# agree disagree p2 q5
+Prioritising the biggest issue. 
+Understandable.
+> null: p2 q6
+
+# disagree agree p2 q5
+You contradict yourself.
+Or perhaps you've changed your stance?
+> null: p2 q6
+
+# disagree disagree p2 q5
+So you think everyone deserves democracy?
+An interesting view.
+> null: p2 q6
+
+# p2 q6
+Final question.
+Are there some people that are such a burden that they are better off gone?
+> yes: agree p2 q6
+> no: disagree p2 q6
+> else: try again1 p2 q6
+
+# try again1 p2 q6
+It's a tough question, but I need it answered.
+We're almost there.
+Are some people such a burden that they are better off gone?
+> yes: agree p2 q6
+> no: disagree p2 q6
+> else: try again2 p2 q6
+
+# try again2 p2 q6
+Goodbye. 
+* leave
+
+# agree p2 q6
+So does knowledge and experience count for absolutely nothing?
+> yes: agree agree p2 q6
+> no: agree disagree p2 q6
+> else: try again3 p2 q6
+
+# try again3 p2 q6
+This isn't difficult.
+Does knowledge and experience count for nothing?
+> yes: agree agree p2 q6
+> no: agree disagree p2 q6
+> else: try again4 p2 q6
+
+# try again4 p2 q6
+Goodbye. 
+* leave
+
+# disagree p2 q6
+But what of benefits? Healthcare? 
+[user], should the younger generation really miss out on a better lifestyle because of the elderly?
+> yes: disagree agree p2 q6
+> no: disagree disagree p2 q6
+> else: try again5 p2 q6
+
+# try again5 p2 q6
+This isn't difficult. 
+Should the younger generation miss out on a better lifestyle because of the elderly?
+> yes: disagree agree p2 q6
+> no: disagree disagree p2 q6
+> else: try again6 p2 q6
+
+# try again6 p2 q6
+Goodbye. 
+* leave
+
+# agree agree p2 q6
+Focus on the new generation, forget about the old. Controversial. 
+...
+> null: p3 q1
+
+# agree disagree p2 q6
+So what does it count for if they're gone?
+I'm not sure I understand.
+...
+> null: p3 q1
+
+# disagree agree p2 q6
+A human is a human.
+A valiant position.
+...
+> null: p3 q1
+
+# disagree disagree p2 q6
+But with the elderly using up a lot of the benefits, how do you propose this works?
+Do you know of a solution?
+...
+> null: p3 q1
 
 # p3 q1
+I trust you, [user].
 You're the only person that I've spoken to that I can trust.
 The question is, can you trust me?
 > yes: agree p3 q1
@@ -78,12 +472,12 @@ I see this is trivial to you. Goodbye.
 * leave
 
 # p3 q3
-This new world is not a utopia. 
+The world I'm going to build is not a utopia. 
 It’s not a perfect place for the prized few. 
 No, it’s a land that rewards honesty and goodwill. 
 Somewhere that progresses naturally, without the need for handshakes and cash injections. 
 A place where people can truly be themselves without fear of being judged. 
-A land in which you would be proud to live in. 
+A land in which you would be proud to live. 
 Given the chance, would you be unselfish and make a long-term difference to the future of our species?
 > yes: agree p3 q3
 > no: disagree p3 q3
