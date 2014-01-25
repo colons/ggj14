@@ -32,9 +32,11 @@ function bindPrompt() {
       data: {message: $prompt.val()},
       success: function(dataString) {
         var data = $.parseJSON(dataString);
-        setTimeout(function() {
-          showMessage(data.message);
-        }, data.delay);
+        $(data.messages).each(function(i, message) {
+          setTimeout(function() {
+            showMessage(message.context);
+          }, message.delay);
+        });
       },
       error: function() {
         // XXX do something
