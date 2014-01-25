@@ -17,15 +17,15 @@ function bindPrompt() {
 
   $form.submit(function(e) {
     e.preventDefault();
-    var value = $prompt.val();
-    if (value === '') {
+    var clientMessage = $prompt.val();
+    if (clientMessage === '') {
       return;
     }
 
     showMessage({
       origin: 'client',
       nick: 'you',
-      content: value
+      content: clientMessage
     });
 
     $prompt.val('');
@@ -33,12 +33,12 @@ function bindPrompt() {
     $.ajax({
       type: 'POST',
       url: postMessageURL,
-      data: {message: $prompt.val()},
+      data: {message: clientMessage},
       success: function(dataString) {
         var data = $.parseJSON(dataString);
         $(data.messages).each(function(i, message) {
           setTimeout(function() {
-            showMessage(message.context);
+            showMessage(message);
           }, message.delay);
         });
       },
