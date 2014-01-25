@@ -2,6 +2,7 @@
 
 @fg: #fafafa;
 @bg: #111;
+@indent: 12em;
 
 * {
   margin: 0;
@@ -11,7 +12,7 @@
 
 html {
   height: 100%;
-  line-height: 1.2em;
+  line-height: 1em;
   background-color: @bg;
   color: @fg;
   font-size: 1.3em;
@@ -23,26 +24,60 @@ body {
 
   .window {
     ul {
-      padding: 1em 1em 4em;
+      display: table;
       list-style: none;
 
+      padding: 1em 1em 4em;
+
       li {
-        .nick {
-          display: inline-block;
-          width: 12em;
-          text-align: right;
-          color: #d66;
-          
-          &::before {content: '<'}
-          &::after {content: '>'}
-        }
-        
-        &.client {
-          .nick {
-            color: #6dd;
+        display: table-row;
+
+        > span, > pre {
+          display: table-cell;
+
+          &.identifier {
+            width: @indent;
+            text-align: right;
           }
 
-          opacity: .6;
+          &.content {
+            padding-left: .5em;
+          }
+        }
+
+        &.status {
+          .identifier {
+            color: @fg;
+
+            &::before, &::after {
+              content: '-';
+              color: #66d;
+            }
+          }
+
+          .content {
+            opacity: .6;
+          }
+        }
+        &.msg {
+          .identifier {
+            &::before {content: '<'}
+            &::after {content: '> '}
+          }
+
+          &.server {
+            .identifier {
+              color: #d66;
+            }
+          }
+          
+          &.client {
+            opacity: .6;
+
+            .identifier {
+              color: #6dd;
+            }
+          }
         }
       }
     }

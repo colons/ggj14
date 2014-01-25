@@ -14,8 +14,15 @@
   {% verbatim %}
     <script id="msg" type="text/x-handlebars-template">
       <li class="msg {{origin}}">
-        <span class="nick">{{nick}}</span>
-        <span class="content">{{content}}</span>
+        <span class="identifier">{{nick}}</span>
+        <pre class="content">{{content}}</pre>
+      </li>
+    </script>
+
+    <script id="status" type="text/x-handlebars-template">
+      <li class="status">
+        <span class="identifier">!</span>
+        <pre class="content">{{content}}</pre>
       </li>
     </script>
   {% endverbatim %}

@@ -6,8 +6,8 @@ function templateFromId(id) {
   return Handlebars.compile(source);
 }
 
-function showMessage(message) {
-  $channelWindow.append(templates.msg(message));
+function showMessage(html) {
+  $channelWindow.append(html);
   window.scroll(0, document.body.scrollHeight);
 }
 
@@ -22,11 +22,11 @@ function bindPrompt() {
       return;
     }
 
-    showMessage({
+    showMessage(templates.msg({
       origin: 'client',
       nick: 'you',
       content: clientMessage
-    });
+    }));
 
     $prompt.val('');
 
@@ -38,7 +38,7 @@ function bindPrompt() {
         var data = $.parseJSON(dataString);
         $(data.messages).each(function(i, message) {
           setTimeout(function() {
-            showMessage(message);
+            showMessage(templates.msg(message));
           }, message.delay);
         });
       },
@@ -52,10 +52,39 @@ function bindPrompt() {
   $prompt.focus();
 }
 
+function connect() {
+  var ms = 0;
+  var messages = [
+    [0, 'connecting to irc.biz.ru:6697...'],
+    [900, '!irc.biz.ru *** Looking up your hostname...'],
+    [700, '!irc.biz.ru *** Checking ident...'],
+    [300, '!irc.biz.ru *** Received identd response'],
+    [100, '!irc.biz.ru *** Found your hostname'],
+    [500, "              _                                "],
+    [10, "__      _____| | ___ ___  _ __ ___   ___       "],
+    [10, "\\ \\ /\\ / / _ \\ |/ __/ _ \\| '_ ` _ \\ / _ \\      "],
+    [10, " \\ V  V /  __/ | (_| (_) | | | | | |  __/_ _ _ "],
+    [10, "  \\_/\\_/ \\___|_|\\___\\___/|_| |_| |_|\\___(_|_|_)"],
+    [10, ""],
+    [900, "joined #t('_'t)"],
+    [50, "channel topic is: ヽ(`Д´)ノ"],
+    [100, "users: [~phoenix420] [@Anna]"]  // XXX use actual name of our foil
+  ];
+  
+  $.each(messages, function(i, thing) {
+    ms += thing[0];
+    setTimeout(function() {
+      showMessage(templates.status({content: thing[1]}));
+    }, ms);
+  });
+}
+
 $(function() {
   $channelWindow = $('#channel ul');
   templates = {
-    msg: templateFromId('msg')
+    msg: templateFromId('msg'),
+    status: templateFromId('status')
   };
+  connect();
   bindPrompt();
 });

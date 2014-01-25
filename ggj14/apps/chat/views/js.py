@@ -37,7 +37,7 @@ class ScriptView(View):
                 'delay': ms,
                 'content': message,
                 'nick': 'phoenix420',
-                'source': 'server',
+                'origin': 'server',
             })
 
         return HttpResponse(ujson.dumps({
