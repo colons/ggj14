@@ -44,9 +44,6 @@ class ScriptView(View):
             request.POST['message'],
         )
 
-        print self.get_script()
-        print current_slug
-
         exchange = self.get_script()[slug]
         request.session['slug'] = slug
 
