@@ -1,11 +1,188 @@
 # initial
-boop
-> else: right
+I trust you.
+You're the only person that I've spoken to that I can trust.
+The question is, can you trust me?
+> yes: agree p3 q1
+> no: disagree p3 q1
+> else: try again1 p3 q1
 
-# right
-okay lets do this man
-> else: out
+# try again1 p3 q1
+Come on now, I just need a simple answer. Can you trust me?
+> yes: agree p3 q1
+> no: disagree p3 q1
+> else: try again2 p3 q1
 
-# out 
-actuall naw ffuck this im out
+# try again2 p3 q1
+It's a question, and the first of many. 
+Give me an answer or we are done. Can you trust me?
+> yes: agree p3 q1
+> no: disagree p3 q1
+> else: try again3 p3 q1
+
+# try again3 p3 q1
+Fine. I won't waste my time further.
+* leave
+
+# agree p3 q1
+This is good. 
+I'm about to let you in on something I've been planning. 
+Something that I've been working on for quite some time.
+> null: p3 q2
+
+# disagree p3 q1
+I can understand why youre being cautious. 
+After all, you know nothing about me. 
+> null: p3 q2
+
+# p3 q2
+This planet is in dire need of change. 
+For too long weve shuffled along a path with no goal. 
+A path that benefits the rich, and punishes the weak. 
+No one is willing to make a meaningful stand, but Ive had enough.
+Im going to have us start again. 
+Rebuild.
+...
+Do you think I'm crazy? 
+> yes: agree p3 q2
+> no: disagree p3 q2
+> else: try again1 p3 q2
+
+# agree p3 q2
+I appreciate how honest you are with me. 
+Society as it is would have me labelled as crazy, but thats just another way of protecting those on top. 
+Having alternate views on how we should spend our existence on this planet is by no means something that should be punished.  
+> null: p3 q3
+
+# disagree p3 q2
+So you have similar views? 
+Perhaps there is some hope left if there are more like us that know we are headed for calamity.
+> null: p3 q3
+
+# try again1 p3 q2
+No need to restrain yourself, I'd like an honest answer. Do you think I'm crazy?
+> yes: agree p3 q2
+> no: disagree p3 q2
+> else: try again2 p3 q2
+
+# try again2 p3 q2
+You are testing my patience. I won't ask you again. Do you think I'm crazy?
+> yes: agree p3 q2
+> no: disagree p3 q2
+> else: try again3 p3 q2
+
+# try again3 p3 q2
+I see this is trivial to you. Goodbye.
+* leave
+
+# p3 q3
+This new world is not a utopia. 
+Its not a perfect place for the prized few. 
+No, its a land that rewards honesty and goodwill. 
+Somewhere that progresses naturally, without the need for handshakes and cash injections. 
+A place where people can truly be themselves without fear of being judged. 
+A land in which you would be proud to live in. 
+Given the chance, would you be unselfish and make a long-term difference to the future of our species?
+> yes: agree p3 q3
+> no: disagree p3 q3
+> else: try again1 p3 q3
+
+# agree p3 q3
+We can be the solution to a problem that wont otherwise be fixed. 
+A turning point in the history of mankind.  
+> null: p3 q4
+
+# disagree p3 q3
+Are you shy, or merely a coward? 
+You would be given unmeasurable power; the ability to craft a sustainable world through simple teachings. 
+Would you succumb to these hinderances at the cost of a dead-end future? 
+I think not. 
+> null: p3 q4
+
+# try again1 p3 q3
+It's a simple question.
+Will you make a long-term difference?
+> yes: agree p3 q3
+> no: disagree p3 q3
+> else: try again2 p3 q3
+
+# try again2 p3 q3
+I am not willing to collaborate with someone who will so easily falter. 
+Final chance.
+Will you make a long-term difference?
+> yes: agree p3 q3
+> no: disagree p3 q3
+> else: try again3 p3 q3
+
+# try again3 p3 q3
+Fine.
+* leave
+
+# p3 q4
+But if we are to make the world a better place, there needs to be a radical change. 
+With change comes sacrifice, and I think you can appreciate that there will be significant casualties in the process. 
+In the new world, we will need people like ourselves to lead those that remain, and to offer guidance to those that find themselves lost. 
+Tell me, do you think you deserve to live when so many must die?
+> yes: agree p3 q4
+> no: disagree p3 q4
+> else: try again1 p3 q4
+
+# agree p3 q4
+Well said. It is difficult to truly appreciate yourself when you are force-fed garbage on equality and fairness. 
+What does fairness even mean? 
+> null: p3 q5
+
+# disagree p3 q4
+You would join the ranks of the mindless sheep that cannot think for themselves? 
+Even at the cost of your own life? 
+You may think this a moral decision, but youre greatly mistaken if you think your death is anything besides wasteful. 
+You will join our ranks and see salvation first-hand. 
+> null: p3 q5
+
+# try again1 p3 q4
+Perhaps you didn't understand me.
+Do you think you deserve to continue living?
+> yes: agree p3 q4
+> no: disagree p3 q4
+> else: try again2 p3 q4
+
+# try again2 p3 q4
+Dodging the question will not work.
+Give me your answer.
+Should you live when everyone must die?
+> yes: agree p3 q4
+> no: disagree p3 q4
+> else: try again3 p3 q4
+
+# try again3 p3 q4
+It seems I will decide for you.
+* leave
+
+# p3 q5
+I can't tell you what my plans are.
+Rather, I won't.
+But know that the world will not be able to react quick enough to stop it.
+You are the first person I trust, and I will find few others.
+And we will rebuild. 
+You are part of this now. 
+But I will ask you again.
+Do you want to know my secret?
+> yes: agree p3 q5
+> else: finalfudge p3 q5
+
+# agree p3 q5
+Good.
+I think you are ready to see it.
+IMAGE HERE OR SUMMAT IDNO LOL XXX
+* leave
+
+# finalfudge p3 q5
+[user], we've come this far and you don't want to know?
+I will only you ask you once more.
+Do you want to know my secret?
+> yes: agree p3 q5
+> else: finalfudge2 p3 q5
+
+# finalfudge2 p3 q5
+Fine.
+What a waste of my time.
 * leave

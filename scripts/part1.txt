@@ -1,40 +1,131 @@
 # initial
-boop
-> greeting: hi
-> else: like
+> else: p1 q1
 
-# hi
-hi
-> null: like
+# p1 q1
+I have a secret.
+Do you want to hear it?
+> yes: p1 q2
+> else: try again1 p1 q1
 
-# like
-do you like me
-?
-> yes: cool
-> no: h8 u
-> else: like
+# try again1 p1 q1
+I have a secret.
+Do you want to hear it?
+> yes: p1 q2
+> else: try again2 p1 q1
 
-# cool
-awesomb bro u2
-> else: brofist
+# try again2 p1 q1
+I have a secret.
+Do you want to hear it?
+> yes: p1 q2
+> else: try again3 p1 q1
 
-# brofist
-yeah man brofist
-share the love
-...
-* part2
-
-# h8 u
-i h8t you 2 man
-fuck a bunch of dicks
-and you
-fuck you especially
-you are the worset
-> else: fuk off
-
-# fuk off
-no srs fuk off
-u r worst
-the very worst
-imma kil u
+# try again3 p1 q1
 * kick
+
+# p1 q2
+Do you prefer day or night?
+> day: p1 q3
+> night: p1 q3
+> else: try again1 p1 q2
+
+# try again1 p1 q2
+Do you prefer day or night?
+> day: p1 q3
+> night: p1 q3
+> else: try again2 p1 q2
+
+# try again2 p1 q2
+Do you prefer day or night?
+> day: p1 q3
+> night: p1 q3
+> else: try again3 p1 q2
+
+# try again3 p1 q2
+* kick
+
+# p1 q3
+Do you prefer Coke or Pepsi?
+> coke: p1 q4
+> pepsi: p1 q4
+> else: try again1 p1 q3
+
+# try again1 p1 q3
+Do you prefer Coke or Pepsi?
+> coke: p1 q4
+> pepsi: p1 q4
+> else: try again2 p1 q3
+
+# try again2 p1 q3
+Do you prefer Coke or Pepsi?
+> coke: p1 q4
+> pepsi: p1 q4
+> else: try again3 p1 q3
+
+# try again3 p1 q3
+* kick
+
+# p1 q4
+Do you prefer the sun or the rain?
+> sun: p1 q5
+> rain: p1 q5
+> else: try again1 p1 q4
+
+# try again1 p1 q4
+Do you prefer the sun or the rain?
+> sun: p1 q5
+> rain: p1 q5
+> else: try again2 p1 q4
+
+# try again2 p1 q4
+Do you prefer the sun or the rain?
+> sun: p1 q5
+> rain: p1 q5
+> else: try again3 p1 q4
+
+# try again3 p1 q4
+* kick
+
+# p1 q5
+Do you prefer dogs or cats?
+> dog: p1 q6
+> cat: p1 q6
+> else: try again1 p1 q5
+
+# try again1 p1 q5
+Do you prefer dogs or cats?
+> dog: p1 q6
+> cat: p1 q6
+> else: try again2 p1 q5
+
+# try again2 p1 q5
+Do you prefer dogs or cats?
+> dog: p1 q6
+> cat: p1 q6
+> else: try again3 p1 q5
+
+# try again3 p1 q5
+* kick
+
+# p1 q6
+Do you still want to hear my secret?
+> yes: p2 q1
+> no: p2 q1
+> else: try again1 p1 q6
+
+# try again1 p1 q6
+Do you still want to hear my secret?
+> yes: p2 q1
+> no: p2 q1
+> else: try again2 p1 q6
+
+# try again2 p1 q6
+Do you still want to hear my secret?
+> yes: p2 q1
+> no: p2 q1
+> else: try again3 p1 q6
+
+# try again3 p1 q6
+* kick
+
+# p2 q1
+* part2
