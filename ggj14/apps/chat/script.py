@@ -1,3 +1,5 @@
+# coding=utf-8
+
 import re
 from os import path
 
@@ -7,11 +9,19 @@ from django.core.exceptions import ValidationError
 ALIASES = {
     'yes': (
         r'yes|yep|yeah|sure|totally|of course|a little|ok|ya|probably|fine|'
-        r'okay'
+        r'okay|i guess'
     ),
     'no': r'no|never|nope|naw',
     'greeting': r'hi|hello|sup|hey|ohayo',
     'else': r'.*',
+}
+
+USERS = {
+    'c': 'colons',
+    'e': 'EuricaeriS',
+    'n': 'NickEd90',
+    'o': 'okänd',
+    't': 'trenchfoot',
 }
 
 
@@ -36,6 +46,8 @@ def parse_script(string):
         seen_aliases = set()
 
         for line in lines[1:]:
+            nick = None
+
             if line.startswith('>'):
                 alias = line.split(':', 1)[0].lstrip('>').strip()
                 target = line.split(':', 1)[1].lstrip('>').strip()
@@ -47,11 +59,17 @@ def parse_script(string):
                 else:
                     regex = ALIASES.get(alias, alias)
                     forks.append((regex, target))
+                continue
 
             elif line.startswith('*'):
                 event = line.lstrip('*').strip()
-            else:
-                messages.append(line.strip())
+                continue
+
+            elif line.startswith('/'):
+                key, line = line.split(' ', 1)
+                nick = USERS[key[1:]]
+
+            messages.append((nick, line.strip()))
 
         if (
             'null' not in seen_aliases and

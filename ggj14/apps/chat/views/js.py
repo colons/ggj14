@@ -17,17 +17,25 @@ class ScriptView(View):
 
         messages = []
 
-        for message in exchange['messages']:
+        for nick, message in exchange['messages']:
             if message == '...':
                 self.ms += 2000 + 2000 * random()
                 continue
 
-            self.ms += (50 * len(message)) + 500 + (500 * random())
+            ms = self.ms + (50 * len(message)) + 500 + (500 * random())
+
+            if nick is None:
+                self.ms = ms
+            else:
+                # if it's not the foil, we should randomise it a little more
+                # and make it happen a little early
+                ms = abs(ms - 750 + (250 * random()))
+
             messages.append({
-                'delay': self.ms,
+                'delay': ms,
                 'type': 'msg',
                 'content': message,
-                'nick': settings.FOIL_NAME,
+                'nick': nick or settings.FOIL_NAME,
                 'origin': 'server',
                 'target': target,
             })
