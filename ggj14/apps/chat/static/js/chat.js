@@ -8,7 +8,7 @@ function templateFromId(id) {
 
 function showMessage(message) {
   $channelWindow.append(templates.msg(message));
-  window.scroll(0, $('body').height() + $(window).height());
+  window.scroll(0, document.body.scrollHeight);
 }
 
 function bindPrompt() {
@@ -17,11 +17,15 @@ function bindPrompt() {
 
   $form.submit(function(e) {
     e.preventDefault();
+    var value = $prompt.val();
+    if (value === '') {
+      return;
+    }
 
     showMessage({
       origin: 'client',
       nick: 'you',
-      content: $prompt.val()
+      content: value
     });
 
     $prompt.val('');
