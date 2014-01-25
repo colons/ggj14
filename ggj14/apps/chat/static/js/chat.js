@@ -72,6 +72,19 @@ function sendMessage(clientMessage) {
   });
 }
 
+function bindTabs() {
+  $tabs = $('#tabs li');
+  $tabs.click(function(e) {
+    $this = $(this);
+    $tabs.removeClass('active');
+    $('.window').removeClass('active');
+    $(document.getElementById($this.attr('data-target'))).addClass('active');
+    $this.addClass('active');
+    scrollToBottom();
+    $prompt.focus();
+  });
+}
+
 function bindPrompt(func) {
   $form.off('submit');
   $form.submit(function(e) {
@@ -162,6 +175,7 @@ $(function() {
   };
 
   $(window).resize(scrollToBottom);
+  bindTabs();
 
   connect();
 });

@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Share+Tech+Mono);
+// @import url(http://fonts.googleapis.com/css?family=Share+Tech+Mono);
 
 @fg: #fafafa;
 @bg: #111;
@@ -29,11 +29,17 @@ body {
   height: 100%;
 
   .window {
+    display: none;
+
+    &.active {
+      display: block;
+    }
+
     ul {
       display: table;
       list-style: none;
 
-      padding: 1em 1em 4em;
+      padding: 3em 1em 4em;
 
       li {
         display: table-row;
@@ -86,6 +92,27 @@ body {
             }
           }
         }
+      }
+    }
+  }
+
+  #tabs {
+    list-style: none;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    padding: 0 1em;
+    font-size: .8em;
+
+    li {
+      border-radius: 0 0 .2em .2em;
+      padding: .5em;
+      display: inline-block;
+
+      &.active {
+        background-color: @fg;
+        color: @bg;
+        box-shadow: 0 0 .5em @bg;
       }
     }
   }

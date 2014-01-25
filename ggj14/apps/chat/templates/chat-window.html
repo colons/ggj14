@@ -1,7 +1,17 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <section class="window" id="channel">
+  <ul id="tabs">
+    <li class="active" data-target="channel">{{ channel_name }}</li>
+    <li data-target="query">{{ foil_name }}</li>
+  </ul>
+
+  <section class="window active" id="channel">
+    <ul>
+    </ul>
+  </section>
+
+  <section class="window" id="query">
     <ul>
     </ul>
   </section>
