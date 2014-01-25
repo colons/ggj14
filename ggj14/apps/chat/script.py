@@ -2,6 +2,7 @@ import re
 from os import path
 
 from django.conf import settings
+from django.core.exceptions import ValidationError
 
 ALIASES = {
     'yes': r'yes|yeah|sure|totally|of course|a little|ok',
@@ -20,12 +21,22 @@ def parse_script(string):
         lines = exchange.split('\n')
         slug = lines[0].lstrip('#').strip()
 
+        if slug in exchanges:
+            raise ValidationError('Duplicate exchange ID: "%s"' % slug)
+
         forks = []
         messages = []
 
         for line in lines[1:]:
             if line.startswith('>'):
-                regex = ALIASES[line.split(':', 1)[0].lstrip('>').strip()]
+                alias = line.split(':', 1)[0].lstrip('>').strip()
+
+                if alias not in ALIASES:
+                    raise ValidationError(
+                        'No such response alias "%s" (you can choose from: %s)'
+                        % (alias, ', '.join(ALIASES.iterkeys())))
+
+                regex = ALIASES[alias]
                 target = line.split(':', 1)[1].lstrip('>').strip()
                 forks.append((regex, target))
             else:
@@ -36,9 +47,22 @@ def parse_script(string):
             'messages': messages,
         }
 
-    # XXX validate
-    # ensure all script targets actually exist, ensure all slugs are unique,
-    # ensure there is an initial
+    # VALIDATE
+    # ensure all script targets actually exist
+
+    if 'initial' not in exchanges:
+        raise ValidationError('No "initial" exchange ID')
+
+    for host_slug, exchange in exchanges.iteritems():
+        # XXX handle infinite loops
+        if not exchange['forks']:
+            raise ValidationError("There's no way out of the \"%s\" exchange"
+                                  % host_slug)
+        for _, target_slug in exchange['forks']:
+            if target_slug not in exchanges:
+                raise ValidationError('No "{target}" exchange ID (referenced '
+                                      'in "{host}")'.format(target=target_slug,
+                                                            host=host_slug))
 
     return exchanges
 
@@ -49,10 +73,8 @@ with open(path.join(settings.BASE_DIR, 'script.txt')) as script_file:
 
 def get_next_exchange(script, current_slug, response):
     current_line = script[current_slug]
+    print current_line
 
     for regex, slug in current_line['forks']:
         if re.match(regex, response, flags=re.IGNORECASE):
             return slug
-
-    # XXX handle this by having the dude ask for clarification
-    raise ValueError('No exchange found to respond with')

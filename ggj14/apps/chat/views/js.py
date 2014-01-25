@@ -10,15 +10,23 @@ from ggj14.apps.chat import script
 class ScriptView(View):
     def post(self, request, *args, **kwargs):
         self.request = request
+        current_slug = request.session.get('slug', 'initial')
 
         slug = script.get_next_exchange(
             self.get_script(),
-            request.session.get('slug', 'initial'),
+            current_slug,
             request.POST['message'],
         )
 
-        request.session['slug'] = slug
-        exchange = self.get_script()[slug]
+        if slug is None:
+            exchange = self.get_script()
+            exchange['messages'] = [
+                "[NOT A RECOGNISED RESPONSE; WE NEED A COOL HUMAN-LOOKIN' WAY "
+                "TO HANDLE THIS]"  # XXX
+            ]
+        else:
+            request.session['slug'] = slug
+            exchange = self.get_script()[slug]
 
         messages = []
         ms = 1000 + (2000 * random())
