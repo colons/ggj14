@@ -30,16 +30,16 @@ Something that I've been working on for quite some time.
 > null: p3 q2
 
 # disagree p3 q1
-I can understand why youre being cautious. 
+I can understand why you’re being cautious. 
 After all, you know nothing about me. 
 > null: p3 q2
 
 # p3 q2
 This planet is in dire need of change. 
-For too long weve shuffled along a path with no goal. 
+For too long we’ve shuffled along a path with no goal. 
 A path that benefits the rich, and punishes the weak. 
-No one is willing to make a meaningful stand, but Ive had enough.
-Im going to have us start again. 
+No one is willing to make a meaningful stand, but I’ve had enough.
+I’m going to have us start again. 
 Rebuild.
 ...
 Do you think I'm crazy? 
@@ -49,7 +49,7 @@ Do you think I'm crazy?
 
 # agree p3 q2
 I appreciate how honest you are with me. 
-Society as it is would have me labelled as crazy, but thats just another way of protecting those on top. 
+Society as it is would have me labelled as crazy, but that’s just another way of protecting those on top. 
 Having alternate views on how we should spend our existence on this planet is by no means something that should be punished.  
 > null: p3 q3
 
@@ -76,8 +76,8 @@ I see this is trivial to you. Goodbye.
 
 # p3 q3
 This new world is not a utopia. 
-Its not a perfect place for the prized few. 
-No, its a land that rewards honesty and goodwill. 
+It’s not a perfect place for the prized few. 
+No, it’s a land that rewards honesty and goodwill. 
 Somewhere that progresses naturally, without the need for handshakes and cash injections. 
 A place where people can truly be themselves without fear of being judged. 
 A land in which you would be proud to live in. 
@@ -87,7 +87,7 @@ Given the chance, would you be unselfish and make a long-term difference to the 
 > else: try again1 p3 q3
 
 # agree p3 q3
-We can be the solution to a problem that wont otherwise be fixed. 
+We can be the solution to a problem that won’t otherwise be fixed. 
 A turning point in the history of mankind.  
 > null: p3 q4
 
@@ -134,7 +134,7 @@ What does fairness even mean?
 # disagree p3 q4
 You would join the ranks of the mindless sheep that cannot think for themselves? 
 Even at the cost of your own life? 
-You may think this a moral decision, but youre greatly mistaken if you think your death is anything besides wasteful. 
+You may think this a moral decision, but you’re greatly mistaken if you think your death is anything besides wasteful. 
 You will join our ranks and see salvation first-hand. 
 > null: p3 q5
 
