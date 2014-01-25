@@ -1,5 +1,8 @@
 # initial
 I trust you.
+> else: p3 q1
+
+# p3 q1
 You're the only person that I've spoken to that I can trust.
 The question is, can you trust me?
 > yes: agree p3 q1

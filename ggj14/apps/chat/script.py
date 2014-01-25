@@ -5,9 +5,12 @@ from django.conf import settings
 from django.core.exceptions import ValidationError
 
 ALIASES = {
-    'yes': r'yes|yep|yeah|sure|totally|of course|a little|ok|ya|probably',
-    'no': r'no|never|nope',
-    'greeting': r'hi|hello|sup',
+    'yes': (
+        r'yes|yep|yeah|sure|totally|of course|a little|ok|ya|probably|fine|'
+        r'okay'
+    ),
+    'no': r'no|never|nope|naw',
+    'greeting': r'hi|hello|sup|hey|ohayo',
     'else': r'.*',
 }
 
