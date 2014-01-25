@@ -1,13 +1,16 @@
 # initial
+> greeting: hi
 > else: like
 
-# like
+# hi
 hi
+> null: like
+
+# like
 do you like me
 ?
 > yes: cool
 > no: h8 u
-> else: like
 
 # cool
 awesomb bro u2

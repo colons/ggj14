@@ -27,19 +27,25 @@ def parse_script(string):
         forks = []
         messages = []
         event = None
+        goto = None
 
         for line in lines[1:]:
             if line.startswith('>'):
                 alias = line.split(':', 1)[0].lstrip('>').strip()
-
-                if alias not in ALIASES:
-                    raise ValidationError(
-                        'No such response alias "%s" (you can choose from: %s)'
-                        % (alias, ', '.join(ALIASES.iterkeys())))
-
-                regex = ALIASES[alias]
                 target = line.split(':', 1)[1].lstrip('>').strip()
-                forks.append((regex, target))
+
+                if alias == 'null':
+                    goto = target
+                else:
+                    if alias not in ALIASES:
+                        raise ValidationError(
+                            'No such response alias "%s" (you can choose from:'
+                            ' %s and null)'
+                            % (alias, ', '.join(ALIASES.iterkeys())))
+
+                    regex = ALIASES[alias]
+                    forks.append((regex, target))
+
             elif line.startswith('*'):
                 event = line.lstrip('*').strip()
             else:
@@ -49,10 +55,31 @@ def parse_script(string):
             'forks': forks,
             'messages': messages,
             'event': event,
+            'goto': goto
         }
 
+    for host_slug, exchange in exchanges.iteritems():
+        if exchange['goto']:
+            if exchange['forks']:
+                raise ValidationError('Exchange %s has null and non-null forks'
+                                      % host_slug)
+
+            if exchange['goto'] not in exchanges:
+                raise ValidationError('No "%s" exchange ID (refernced in "%s")'
+                                      % (exchange['goto'], host_slug))
+
+            goto = exchanges[exchange['goto']]
+
+            if goto['goto']:
+                raise ValidationError(
+                    "I am lazy and haven't implemented chaning nulls; talk to "
+                    "me if you need this."
+                )
+
+            exchange['forks'] = goto['forks']
+            exchange['messages'] = exchange['messages'] + goto['messages']
+
     # VALIDATE
-    # ensure all script targets actually exist
 
     if 'initial' not in exchanges:
         raise ValidationError('No "initial" exchange ID')
@@ -62,6 +89,7 @@ def parse_script(string):
         if not (exchange['forks'] or exchange['event']):
             raise ValidationError("There's no way out of the \"%s\" exchange"
                                   % host_slug)
+        print exchange['forks']
         for _, target_slug in exchange['forks']:
             if target_slug not in exchanges:
                 raise ValidationError('No "{target}" exchange ID (referenced '
