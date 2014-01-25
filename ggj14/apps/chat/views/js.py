@@ -35,9 +35,17 @@ class ScriptView(View):
             ms += (50 * len(message)) + 500 + (500 * random())
             messages.append({
                 'delay': ms,
+                'type': 'msg',
                 'content': message,
                 'nick': 'phoenix420',
                 'origin': 'server',
+            })
+
+        if exchange['event']:
+            ms += 500 + (500 * random())
+            messages.append({
+                'delay': ms,
+                'event': exchange['event'],
             })
 
         return HttpResponse(ujson.dumps({

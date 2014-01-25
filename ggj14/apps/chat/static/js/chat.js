@@ -1,5 +1,9 @@
+var events;
 var templates;
+
 var $channelWindow;
+var $form;
+var $prompt;
 
 function templateFromId(id) {
   var source = $(document.getElementById(id)).html();
@@ -11,10 +15,11 @@ function showMessage(html) {
   window.scroll(0, document.body.scrollHeight);
 }
 
-function bindPrompt() {
-  var $form = $('form#input');
-  var $prompt = $($form.find('#prompt'));
+function showStatusMessage(content) {
+  showMessage(templates.status({content: content}));
+}
 
+function bindPrompt() {
   $form.submit(function(e) {
     e.preventDefault();
     var clientMessage = $prompt.val();
@@ -36,9 +41,14 @@ function bindPrompt() {
       data: {message: clientMessage},
       success: function(dataString) {
         var data = $.parseJSON(dataString);
+
         $(data.messages).each(function(i, message) {
           setTimeout(function() {
-            showMessage(templates.msg(message));
+            if (message.event) {
+              events[message.event]();
+            } else {
+              showMessage(templates[message.type](message));
+            }
           }, message.delay);
         });
       },
@@ -53,6 +63,13 @@ function bindPrompt() {
 
   $form.slideDown();
   $prompt.focus();
+}
+
+function unbindPrompt() {
+  $form.submit(function(e) {
+    e.preventDefault();
+  });
+  $form.slideUp();
 }
 
 function connect() {
@@ -71,7 +88,7 @@ function connect() {
     [10, ""],
     [900, "joined #t('_'t)"],
     [50, "channel topic is: ヽ(`Д´)ノ"],
-    [100, "users: [~phoenix420] [@Anna]"]  // XXX use actual name of our foil
+    [100, "users: [~phoenix420] [@Anna] [ you]"]  // XXX use actual name of our foil
   ];
   
   $.each(messages, function(i, thing) {
@@ -84,11 +101,24 @@ function connect() {
   setTimeout(bindPrompt, ms);
 }
 
+function getKicked() {
+  unbindPrompt();
+  showStatusMessage("kicked from #t('_'t) by phoenix420");
+}
+
 $(function() {
+  $form = $('form#input');
+  $prompt = $($form.find('#prompt'));
   $channelWindow = $('#channel ul');
+
   templates = {
     msg: templateFromId('msg'),
     status: templateFromId('status')
   };
+
+  events = {
+    kick: getKicked
+  };
+
   connect();
 });

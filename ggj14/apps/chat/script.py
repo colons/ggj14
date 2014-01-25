@@ -26,6 +26,7 @@ def parse_script(string):
 
         forks = []
         messages = []
+        event = None
 
         for line in lines[1:]:
             if line.startswith('>'):
@@ -39,12 +40,15 @@ def parse_script(string):
                 regex = ALIASES[alias]
                 target = line.split(':', 1)[1].lstrip('>').strip()
                 forks.append((regex, target))
+            elif line.startswith('*'):
+                event = line.lstrip('*').strip()
             else:
                 messages.append(line.strip())
 
         exchanges[slug] = {
             'forks': forks,
             'messages': messages,
+            'event': event,
         }
 
     # VALIDATE
@@ -55,7 +59,7 @@ def parse_script(string):
 
     for host_slug, exchange in exchanges.iteritems():
         # XXX handle infinite loops
-        if not exchange['forks']:
+        if not (exchange['forks'] or exchange['event']):
             raise ValidationError("There's no way out of the \"%s\" exchange"
                                   % host_slug)
         for _, target_slug in exchange['forks']:
@@ -73,7 +77,6 @@ with open(path.join(settings.BASE_DIR, 'script.txt')) as script_file:
 
 def get_next_exchange(script, current_slug, response):
     current_line = script[current_slug]
-    print current_line
 
     for regex, slug in current_line['forks']:
         if re.match(regex, response, flags=re.IGNORECASE):

@@ -28,4 +28,4 @@ you are the worset
 
 # fuk off
 no srs fuk off
-> else: initial
+* kick
