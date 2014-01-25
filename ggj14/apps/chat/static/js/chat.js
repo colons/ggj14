@@ -43,8 +43,13 @@ function bindPrompt() {
       success: function(dataString) {
         var data = $.parseJSON(dataString);
         var longestDelay = 0;
+        var hasEvent = false;
 
         $(data.messages).each(function(i, message) {
+          if (message.event) {
+            hasEvent = true;
+          }
+
           setTimeout(function() {
             if (message.event) {
               events[message.event]();
@@ -58,7 +63,9 @@ function bindPrompt() {
           }
         });
 
-        setTimeout(bindPrompt, longestDelay);
+        if (!hasEvent) {
+          setTimeout(bindPrompt, longestDelay);
+        }
       },
       error: function() {
         // XXX do something better here
@@ -77,6 +84,7 @@ function unbindPrompt() {
   $form.submit(function(e) {
     e.preventDefault();
   });
+
   $form.slideUp();
 }
 
@@ -109,9 +117,13 @@ function connect() {
   setTimeout(bindPrompt, ms);
 }
 
+// XXX events must rebind the prompt manually
 function getKicked() {
-  unbindPrompt();
   showStatusMessage("kicked from #t('_'t) by phoenix420");
+}
+
+function foilQuit() {
+  showStatusMessage("phoenix420 has quit");
 }
 
 $(function() {
@@ -125,7 +137,8 @@ $(function() {
   };
 
   events = {
-    kick: getKicked
+    kick: getKicked,
+    leave: foilQuit
   };
 
   connect();
