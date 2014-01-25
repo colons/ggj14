@@ -11,7 +11,7 @@ ALIASES = {
         r'yes|yep|yeah|sure|totally|of course|a little|ok|ya|probably|fine|'
         r'okay|i guess'
     ),
-    'no': r'no|never|nope|naw',
+    'no': r'no|never|nope|naw|maybe',
     'greeting': r'hi|hello|sup|hey|ohayo',
     'else': r'.*',
 }

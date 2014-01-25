@@ -125,38 +125,48 @@ function unbindPrompt() {
   $form.slideUp();
 }
 
-function connect() {
+function login() {
   showStatusMessage('enter a nickname');
   bindPrompt(function(input) {
     nick = input;
 
-    var ms = 0;
-    var messages = [
-      [0, 'connecting to irc.biz.ru:6697 as ' + nick + '...'],
-      [900, '!irc.biz.ru *** Looking up your hostname...'],
-      [700, '!irc.biz.ru *** Checking ident...'],
-      [300, '!irc.biz.ru *** Received identd response'],
-      [100, '!irc.biz.ru *** Found your hostname'],
-      [500, "              _                                "],
-      [10, "__      _____| | ___ ___  _ __ ___   ___       "],
-      [10, "\\ \\ /\\ / / _ \\ |/ __/ _ \\| '_ ` _ \\ / _ \\      "],
-      [10, " \\ V  V /  __/ | (_| (_) | | | | | |  __/_ _ _ "],
-      [10, "  \\_/\\_/ \\___|_|\\___\\___/|_| |_| |_|\\___(_|_|_)"],
-      [10, ""],
-      [900, "joined " + channelName],
-      [50, "channel topic is: ヽ(`Д´)ノ"],
-      [100, "users: [~" + foilName + "] [&NickEd90] [@colons] [@EuricaeriS] [@okänd] [+trenchfoot] [ " + nick + "]"]  // XXX use actual name of our foil
-    ];
-    
-    $.each(messages, function(i, thing) {
-      ms += thing[0];
-      setTimeout(function() {
-        showStatusMessage(thing[1]);
-      }, ms);
+    $.ajax({
+      type: 'POST',
+      url: setNickURL,
+      data: {nick: nick},
+      success: connect,
+      error: login
     });
-
-    setTimeout(bindPrompt, ms);
   });
+}
+
+function connect() {
+  var ms = 0;
+  var messages = [
+    [0, 'connecting to irc.biz.ru:6697 as ' + nick + '...'],
+    [900, '!irc.biz.ru *** Looking up your hostname...'],
+    [700, '!irc.biz.ru *** Checking ident...'],
+    [300, '!irc.biz.ru *** Received identd response'],
+    [100, '!irc.biz.ru *** Found your hostname'],
+    [500, "              _                                "],
+    [10, "__      _____| | ___ ___  _ __ ___   ___       "],
+    [10, "\\ \\ /\\ / / _ \\ |/ __/ _ \\| '_ ` _ \\ / _ \\      "],
+    [10, " \\ V  V /  __/ | (_| (_) | | | | | |  __/_ _ _ "],
+    [10, "  \\_/\\_/ \\___|_|\\___\\___/|_| |_| |_|\\___(_|_|_)"],
+    [10, ""],
+    [900, "joined " + channelName],
+    [50, "channel topic is: ヽ(`Д´)ノ"],
+    [100, "users: [~" + foilName + "] [&NickEd90] [@colons] [@EuricaeriS] [@okänd] [+trenchfoot] [ " + nick + "]"]  // XXX use actual name of our foil
+  ];
+  
+  $.each(messages, function(i, thing) {
+    ms += thing[0];
+    setTimeout(function() {
+      showStatusMessage(thing[1]);
+    }, ms);
+  });
+
+  setTimeout(bindPrompt, ms);
 }
 
 // XXX events must rebind the prompt manually
@@ -197,5 +207,5 @@ $(function() {
   $(window).resize(scrollToBottom);
   bindTabs();
 
-  connect();
+  login();
 });

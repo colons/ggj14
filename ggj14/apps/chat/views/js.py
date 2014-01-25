@@ -2,7 +2,7 @@ from random import random
 import ujson
 
 from django.conf import settings
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseBadRequest
 from django.views.generic import View
 
 from ggj14.apps.chat import script
@@ -34,10 +34,12 @@ class ScriptView(View):
             messages.append({
                 'delay': ms,
                 'type': 'msg',
-                'content': message,
                 'nick': nick or settings.FOIL_NAME,
                 'origin': 'server',
                 'target': target,
+                'content': message.replace(
+                    '[user]', self.request.session['nick']
+                ),
             })
 
         return messages
@@ -76,6 +78,17 @@ class ScriptView(View):
         return HttpResponse(ujson.dumps({
             'messages': messages,
         }))
+
+
+class SetNickView(View):
+    def post(self, request, *args, **kwargs):
+        nick = request.POST.get('nick')
+
+        if nick is None:
+            return HttpResponseBadRequest()
+        else:
+            request.session['nick'] = nick
+            return HttpResponse()
 
 
 class DefaultScript(ScriptView):
