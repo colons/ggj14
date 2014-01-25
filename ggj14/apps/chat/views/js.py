@@ -35,7 +35,7 @@ class ScriptView(View):
                 'delay': ms,
                 'type': 'msg',
                 'nick': nick or settings.FOIL_NAME,
-                'origin': 'server',
+                'origin': 'server %s' % (nick or 'foil'),
                 'target': target,
                 'content': message.replace(
                     '[user]', self.request.session['nick']
