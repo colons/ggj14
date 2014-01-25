@@ -2,7 +2,7 @@
 
 @fg: #fafafa;
 @bg: #111;
-@indent: 8em;
+@indent: 7em;
 
 * {
   margin: 0;
@@ -15,7 +15,13 @@ html {
   line-height: 1em;
   background-color: @bg;
   color: @fg;
-  font-size: 1.3em;
+
+  font-size: 1em;
+
+  @media (min-width: 40em) {
+    font-size: 1.3em;
+  }
+
   font-family: 'Share Tech Mono', monospace;
 }
 
@@ -42,7 +48,7 @@ body {
           }
 
           &.content {
-            padding-left: .5em;
+            padding-left: .7em;
           }
         }
 

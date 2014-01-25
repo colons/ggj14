@@ -12,6 +12,10 @@ function templateFromId(id) {
 
 function showMessage(html) {
   $channelWindow.append(html);
+  scrollToBottom();
+}
+
+function scrollToBottom() {
   window.scroll(0, document.body.scrollHeight);
 }
 
@@ -143,6 +147,8 @@ $(function() {
     kick: getKicked,
     leave: foilQuit
   };
+
+  $(window).resize(scrollToBottom);
 
   connect();
 });
