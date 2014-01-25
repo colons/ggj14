@@ -33,7 +33,6 @@ function bindPrompt() {
       success: function(dataString) {
         var data = $.parseJSON(dataString);
         setTimeout(function() {
-          console.log(data.message);
           showMessage(data.message);
         }, data.delay);
       },
