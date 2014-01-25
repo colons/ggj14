@@ -36,6 +36,7 @@ class ScriptView(View):
                 'type': 'msg',
                 'nick': nick or settings.FOIL_NAME,
                 'origin': 'server %s' % (nick or 'foil'),
+                'isFoil': not nick,
                 'target': target,
                 'content': message.replace(
                     '[user]', self.request.session['nick']

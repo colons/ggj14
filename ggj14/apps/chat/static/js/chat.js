@@ -37,7 +37,7 @@ function sendMessage(clientMessage) {
     data: {message: clientMessage},
     success: function(dataString) {
       var data = $.parseJSON(dataString);
-      var longestDelay = 0;
+      var longestFoilDelay = 0;
       var hasEvent = false;
 
       $(data.messages).each(function(i, message) {
@@ -57,13 +57,13 @@ function sendMessage(clientMessage) {
           }
         }, message.delay);
 
-        if (message.delay > longestDelay) {
-          longestDelay = message.delay;
+        if (message.isFoil && message.delay > longestFoilDelay) {
+          longestFoilDelay = message.delay;
         }
       });
 
       if (!hasEvent) {
-        setTimeout(bindPrompt, longestDelay);
+        setTimeout(bindPrompt, longestFoilDelay);
       }
     },
     error: function() {
