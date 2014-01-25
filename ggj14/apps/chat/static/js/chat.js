@@ -46,6 +46,9 @@ function bindPrompt() {
         var hasEvent = false;
 
         $(data.messages).each(function(i, message) {
+          // we don't want to automatically show the prompt if there's an event
+          // attached to this exchange, so we will make a note of if this is
+          // one or not
           if (message.event) {
             hasEvent = true;
           }

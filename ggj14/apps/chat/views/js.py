@@ -22,7 +22,7 @@ class ScriptView(View):
         request.session['slug'] = slug
 
         messages = []
-        ms = 1000 + (2000 * random())
+        ms = 100 + (500 * random())
 
         for message in exchange['messages']:
             if message == '...':
