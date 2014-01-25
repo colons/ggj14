@@ -4,56 +4,55 @@ from os import path
 from django.conf import settings
 
 ALIASES = {
-    'yes': r'yes|yeah|sure|totally|of course',
-    'no': r'no|nope|never',
+    'yes': r'yes|yeah|sure|totally|of course|a little|ok',
+    'no': r'no|never',
     'greeting': r'hi|hello|sup',
     'else': r'.*',
 }
 
 
-def get_script():
+def parse_script(string):
     exchanges = {}
+    string = string.replace('\r\n', '\n')
 
-    with open(path.join(settings.BASE_DIR, 'script.txt')) as script_file:
-        for exchange in script_file.read().split('\n\n'):
-            exchange = exchange.strip()
-            lines = exchange.split('\n')
-            slug = lines[0].lstrip('#').strip()
+    for exchange in string.split('\n\n'):
+        exchange = exchange.strip()
+        lines = exchange.split('\n')
+        slug = lines[0].lstrip('#').strip()
 
-            forks = []
-            messages = []
+        forks = []
+        messages = []
 
-            for line in lines[1:]:
-                if line.startswith('>'):
-                    regex = ALIASES[line.split(':', 1)[0].lstrip('>').strip()]
-                    target = line.split(':', 1)[1].lstrip('>').strip()
-                    forks.append((regex, target))
-                else:
-                    messages.append(line.strip())
+        for line in lines[1:]:
+            if line.startswith('>'):
+                regex = ALIASES[line.split(':', 1)[0].lstrip('>').strip()]
+                target = line.split(':', 1)[1].lstrip('>').strip()
+                forks.append((regex, target))
+            else:
+                messages.append(line.strip())
 
-            exchanges[slug] = {
-                'forks': forks,
-                'messages': messages,
-            }
+        exchanges[slug] = {
+            'forks': forks,
+            'messages': messages,
+        }
 
     # XXX validate
-    # ensure all script elements have an else, ensure all script targets
-    # actually exist, ensure all slugs are unique, ensure there is an initial
+    # ensure all script targets actually exist, ensure all slugs are unique,
+    # ensure there is an initial
 
     return exchanges
 
 
-SCRIPT = get_script()
+with open(path.join(settings.BASE_DIR, 'script.txt')) as script_file:
+    DEFAULT_SCRIPT = parse_script(script_file.read())
 
-print SCRIPT
 
-
-def get_next_exchange(current_slug, response):
-    current_line = SCRIPT[current_slug]
+def get_next_exchange(script, current_slug, response):
+    current_line = script[current_slug]
 
     for regex, slug in current_line['forks']:
         if re.match(regex, response, flags=re.IGNORECASE):
             return slug
 
-    # XXX maybe make more verbose
+    # XXX handle this by having the dude ask for clarification
     raise ValueError('No exchange found to respond with')

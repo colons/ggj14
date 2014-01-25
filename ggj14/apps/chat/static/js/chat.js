@@ -43,7 +43,8 @@ function bindPrompt() {
         });
       },
       error: function() {
-        // XXX do something
+        // XXX do something better here
+        alert('THERE WAS AN ERROR sorry i will handle this better in future');
       }
     });
   });

@@ -1,6 +1,5 @@
 # initial
-> greeting: like
-> else: initial
+> else: like
 
 # like
 hi
@@ -25,4 +24,8 @@ fuck a bunch of dicks
 and you
 fuck you especially
 you are the worset
-> else: like
+> else: fuk off
+
+# fuk off
+no srs fuk off
+> else: initial
