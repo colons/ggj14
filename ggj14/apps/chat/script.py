@@ -13,6 +13,8 @@ ALIASES = {
 
 
 def parse_script(string):
+    # XXX this whole thing is gross
+
     exchanges = {}
     string = string.replace('\r\n', '\n')
 
@@ -28,11 +30,14 @@ def parse_script(string):
         messages = []
         event = None
         goto = None
+        seen_aliases = set()
 
         for line in lines[1:]:
             if line.startswith('>'):
                 alias = line.split(':', 1)[0].lstrip('>').strip()
                 target = line.split(':', 1)[1].lstrip('>').strip()
+
+                seen_aliases.add(alias)
 
                 if alias == 'null':
                     goto = target
@@ -50,6 +55,13 @@ def parse_script(string):
                 event = line.lstrip('*').strip()
             else:
                 messages.append(line.strip())
+
+        if (
+            'null' not in seen_aliases and
+            'else' not in seen_aliases and
+            not event
+        ):
+            raise ValidationError('Exchange "%s" does not have an else' % slug)
 
         exchanges[slug] = {
             'forks': forks,

@@ -18,15 +18,8 @@ class ScriptView(View):
             request.POST['message'],
         )
 
-        if slug is None:
-            exchange = self.get_script()
-            exchange['messages'] = [
-                "[NOT A RECOGNISED RESPONSE; WE NEED A COOL HUMAN-LOOKIN' WAY "
-                "TO HANDLE THIS]"  # XXX
-            ]
-        else:
-            request.session['slug'] = slug
-            exchange = self.get_script()[slug]
+        exchange = self.get_script()[slug]
+        request.session['slug'] = slug
 
         messages = []
         ms = 1000 + (2000 * random())

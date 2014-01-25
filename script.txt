@@ -11,6 +11,7 @@ do you like me
 ?
 > yes: cool
 > no: h8 u
+> else: like
 
 # cool
 awesomb bro u2
