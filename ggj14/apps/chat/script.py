@@ -9,11 +9,12 @@ from django.core.exceptions import ValidationError
 ALIASES = {
     'yes': (
         r'yes|yep|yeah|sure|totally|of course|a little|ok|ya|probably|fine|'
-        r'okay|i guess|aye|yissir'
+        r'okay|i guess|aye|yissir|kay|affirmative'
     ),
-    'no': r'no|never|nope|naw|maybe',
+    'no': r'no|never|nope|naw|maybe|negative|negatory',
     'greeting': r'hi|hello|sup|hey|ohayo',
     'else': r'.*',
+    'coke': 'coke|coca cola',
 }
 
 USERS = {
