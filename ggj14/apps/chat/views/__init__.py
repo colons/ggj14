@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.shortcuts import redirect
 from django.views.generic import TemplateView, FormView
@@ -13,6 +14,8 @@ class ChatWindow(TemplateView):
     def get_context_data(self):
         context = super(ChatWindow, self).get_context_data()
         context['post_message_url'] = reverse(self.script_handler)
+        context['foil_name'] = settings.FOIL_NAME
+        context['channel_name'] = settings.CHANNEL_NAME
         return context
 
     def get(self, request, *args, **kwargs):

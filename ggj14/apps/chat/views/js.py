@@ -1,6 +1,7 @@
 from random import random
 import ujson
 
+from django.conf import settings
 from django.http import HttpResponse
 from django.views.generic import View
 
@@ -34,7 +35,7 @@ class ScriptView(View):
                 'delay': ms,
                 'type': 'msg',
                 'content': message,
-                'nick': 'phoenix420',
+                'nick': settings.FOIL_NAME,
                 'origin': 'server',
             })
 

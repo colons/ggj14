@@ -101,3 +101,8 @@ PIPELINE_JS = {
         'output_filename': 'js/min/script.js',
     },
 }
+
+# GGJ14
+
+FOIL_NAME = 'MisterEnemy'
+CHANNEL_NAME = '#interboats'

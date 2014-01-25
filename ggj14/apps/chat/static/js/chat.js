@@ -109,9 +109,9 @@ function connect() {
     [10, " \\ V  V /  __/ | (_| (_) | | | | | |  __/_ _ _ "],
     [10, "  \\_/\\_/ \\___|_|\\___\\___/|_| |_| |_|\\___(_|_|_)"],
     [10, ""],
-    [900, "joined #t('_'t)"],
+    [900, "joined " + channelName],
     [50, "channel topic is: ヽ(`Д´)ノ"],
-    [100, "users: [~phoenix420] [&nicked90] [@colons] [@EuricaeriS] [@okand] [+trenchfoot] [ you]"]  // XXX use actual name of our foil
+    [100, "users: [~" + foilName + "] [&nicked90] [@colons] [@EuricaeriS] [@okand] [+trenchfoot] [ you]"]  // XXX use actual name of our foil
   ];
   
   $.each(messages, function(i, thing) {
@@ -126,11 +126,11 @@ function connect() {
 
 // XXX events must rebind the prompt manually
 function getKicked() {
-  showStatusMessage("kicked from #t('_'t) by phoenix420");
+  showStatusMessage("kicked from " + channelName + " by " + foilName);
 }
 
 function foilQuit() {
-  showStatusMessage("phoenix420 has quit");
+  showStatusMessage(foilName + " has quit");
 }
 
 $(function() {
