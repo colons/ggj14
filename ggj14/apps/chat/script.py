@@ -52,7 +52,7 @@ def get_next_exchange(current_slug, response):
     current_line = SCRIPT[current_slug]
 
     for regex, slug in current_line['forks']:
-        if re.match(regex, response):
+        if re.match(regex, response, flags=re.IGNORECASE):
             return slug
 
     # XXX maybe make more verbose
