@@ -5,8 +5,8 @@ from django.conf import settings
 from django.core.exceptions import ValidationError
 
 ALIASES = {
-    'yes': r'yes|yeah|sure|totally|of course|a little|ok|ya',
-    'no': r'no|never',
+    'yes': r'yes|yeah|sure|totally|of course|a little|ok|ya|probably|',
+    'no': r'no|never|nope',
     'greeting': r'hi|hello|sup',
     'else': r'.*',
 }
@@ -116,5 +116,5 @@ def get_next_exchange(script, current_slug, response):
     current_line = script[current_slug]
 
     for regex, slug in current_line['forks']:
-        if re.match(regex, response, flags=re.IGNORECASE):
+        if re.findall(r'\b%s\b' % regex, response, flags=re.IGNORECASE):
             return slug

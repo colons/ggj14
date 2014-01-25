@@ -162,10 +162,12 @@ function connect() {
 // XXX events must rebind the prompt manually
 function getKicked() {
   showStatusMessage("kicked from " + channelName + " by " + foilName);
+  $('section.enabled').removeClass('enabled');
 }
 
 function foilQuit() {
   showStatusMessage(foilName + " has quit");
+  $('section.enabled').removeClass('enabled');
 }
 
 function startPartTwo() {
