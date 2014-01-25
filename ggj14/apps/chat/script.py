@@ -105,8 +105,11 @@ def parse_script(string):
     return exchanges
 
 
-with open(path.join(settings.BASE_DIR, 'script.txt')) as script_file:
-    DEFAULT_SCRIPT = parse_script(script_file.read())
+PARTS = []
+
+for part in ['part1.txt', 'part2.txt']:
+    with open(path.join(settings.BASE_DIR, 'scripts', part)) as script_file:
+        PARTS.append(parse_script(script_file.read()))
 
 
 def get_next_exchange(script, current_slug, response):

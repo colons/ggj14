@@ -1,4 +1,5 @@
 # initial
+boop
 > greeting: hi
 > else: like
 
@@ -20,8 +21,8 @@ awesomb bro u2
 # brofist
 yeah man brofist
 share the love
-anyway cool man i gott go
-* leave
+...
+* part2
 
 # h8 u
 i h8t you 2 man
@@ -34,10 +35,6 @@ you are the worset
 # fuk off
 no srs fuk off
 u r worst
-...
-...
-...
 the very worst
 imma kil u
-...
 * kick

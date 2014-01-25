@@ -15,17 +15,17 @@ function scrollToBottom() {
   window.scroll(0, document.body.scrollHeight);
 }
 
-function showMessage(html) {
-  $channelWindow.append(html);
+function showMessage($target, html) {
+  $target.find('ul').append(html);
   scrollToBottom();
 }
 
 function showStatusMessage(content) {
-  showMessage(templates.status({content: content}));
+  showMessage($('.window.active'), templates.status({content: content}));
 }
 
 function sendMessage(clientMessage) {
-  showMessage(templates.msg({
+  showMessage($('section.window.active'), templates.msg({
     origin: 'client',
     nick: nick,
     content: clientMessage
@@ -47,12 +47,13 @@ function sendMessage(clientMessage) {
         // of if this is one or not
 
         if (message.event) { hasEvent = true; }
+        var $target = $(document.getElementById(message.target));
 
         setTimeout(function() {
           if (message.event) {
             events[message.event]();
           } else {
-            showMessage(templates[message.type](message));
+            showMessage($target, templates[message.type](message));
           }
         }, message.delay);
 
@@ -159,6 +160,12 @@ function foilQuit() {
   showStatusMessage(foilName + " has quit");
 }
 
+function startPartTwo() {
+  $('#tabs').slideDown();
+  $('#tabs li[data-target=query]').click();
+  bindPrompt();
+}
+
 $(function() {
   $form = $('form#input');
   $prompt = $($form.find('#prompt'));
@@ -171,7 +178,8 @@ $(function() {
 
   events = {
     kick: getKicked,
-    leave: foilQuit
+    leave: foilQuit,
+    part2: startPartTwo
   };
 
   $(window).resize(scrollToBottom);

@@ -1,0 +1,11 @@
+# initial
+boop
+> else: right
+
+# right
+okay lets do this man
+> else: out
+
+# out 
+actuall naw ffuck this im out
+* leave
