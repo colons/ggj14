@@ -104,7 +104,7 @@ PIPELINE_JS = {
 
 # GGJ14
 
-FOIL_NAME = 'foil'
+FOIL_NAME = 'Ymir'
 CHANNEL_NAME = '#interboats'
 
 from settings_local import *  # NOQA
