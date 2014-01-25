@@ -9,7 +9,7 @@ from django.core.exceptions import ValidationError
 ALIASES = {
     'yes': (
         r'yes|yep|yeah|sure|totally|of course|a little|ok|ya|probably|fine|'
-        r'okay|i guess'
+        r'okay|i guess|aye|yissir'
     ),
     'no': r'no|never|nope|naw|maybe',
     'greeting': r'hi|hello|sup|hey|ohayo',
