@@ -4,8 +4,8 @@ from os import path
 from django.conf import settings
 
 ALIASES = {
-    'yes': r'y.*|sure\b.*',
-    'no': r'n.*',
+    'yes': r'yes|yeah|sure|totally|of course',
+    'no': r'no|nope|never',
     'greeting': r'hi|hello|sup',
     'else': r'.*',
 }
@@ -52,7 +52,7 @@ def get_next_exchange(current_slug, response):
     current_line = SCRIPT[current_slug]
 
     for regex, slug in current_line['forks']:
-        if re.match(regex + '$', response):
+        if re.match(regex, response):
             return slug
 
     # XXX maybe make more verbose
