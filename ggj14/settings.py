@@ -11,13 +11,11 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-SECRET_KEY = 'pcw$z!stu=_@jr8(2@m_^xo#y+a*@ol!44ohgs5z6j6b@h8_xg'
+DEBUG = False
 
-DEBUG = True
+TEMPLATE_DEBUG = False
 
-TEMPLATE_DEBUG = True
-
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['ggj14.colons.co']
 
 INSTALLED_APPS = (
     'django.contrib.admin',
