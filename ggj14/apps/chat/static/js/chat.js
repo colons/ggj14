@@ -34,6 +34,7 @@ function bindPrompt() {
     }));
 
     $prompt.val('');
+    unbindPrompt();
 
     $.ajax({
       type: 'POST',
@@ -41,6 +42,7 @@ function bindPrompt() {
       data: {message: clientMessage},
       success: function(dataString) {
         var data = $.parseJSON(dataString);
+        var longestDelay = 0;
 
         $(data.messages).each(function(i, message) {
           setTimeout(function() {
@@ -50,7 +52,13 @@ function bindPrompt() {
               showMessage(templates[message.type](message));
             }
           }, message.delay);
+
+          if (message.delay > longestDelay) {
+            longestDelay = message.delay;
+          }
         });
+
+        setTimeout(bindPrompt, longestDelay);
       },
       error: function() {
         // XXX do something better here

@@ -25,6 +25,10 @@ class ScriptView(View):
         ms = 1000 + (2000 * random())
 
         for message in exchange['messages']:
+            if message == '...':
+                ms += 2000 + 2000 * random()
+                continue
+
             ms += (50 * len(message)) + 500 + (500 * random())
             messages.append({
                 'delay': ms,

@@ -101,7 +101,7 @@ def parse_script(string):
         if not (exchange['forks'] or exchange['event']):
             raise ValidationError("There's no way out of the \"%s\" exchange"
                                   % host_slug)
-        print exchange['forks']
+
         for _, target_slug in exchange['forks']:
             if target_slug not in exchanges:
                 raise ValidationError('No "{target}" exchange ID (referenced '
