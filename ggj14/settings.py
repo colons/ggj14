@@ -104,5 +104,5 @@ PIPELINE_JS = {
 
 # GGJ14
 
-FOIL_NAME = 'MisterEnemy'
+FOIL_NAME = 'foil'
 CHANNEL_NAME = '#interboats'

@@ -5,7 +5,7 @@ from django.conf import settings
 from django.core.exceptions import ValidationError
 
 ALIASES = {
-    'yes': r'yes|yeah|sure|totally|of course|a little|ok',
+    'yes': r'yes|yeah|sure|totally|of course|a little|ok|ya',
     'no': r'no|never',
     'greeting': r'hi|hello|sup',
     'else': r'.*',
@@ -42,13 +42,7 @@ def parse_script(string):
                 if alias == 'null':
                     goto = target
                 else:
-                    if alias not in ALIASES:
-                        raise ValidationError(
-                            'No such response alias "%s" (you can choose from:'
-                            ' %s and null)'
-                            % (alias, ', '.join(ALIASES.iterkeys())))
-
-                    regex = ALIASES[alias]
+                    regex = ALIASES.get(alias, alias)
                     forks.append((regex, target))
 
             elif line.startswith('*'):
