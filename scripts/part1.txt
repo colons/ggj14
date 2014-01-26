@@ -3,9 +3,8 @@
 
 # p1 q1
 I have a secret, [user].
-...
-/c here we go again...
 Do you want to hear it?
+/c here we go again...
 > yes: p1 q1b
 > else: try again1 p1 q1
 

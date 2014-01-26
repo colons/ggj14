@@ -28,6 +28,37 @@ function showStatusMessage(content, element) {
   showMessage(element, templates.status({content: content}));
 }
 
+function showMessages(messages) {
+  var longestFoilDelay = 0;
+  var hasEvent = false;
+
+  $(messages).each(function(i, message) {
+
+    // we don't want to automatically show the prompt if there's a
+    // scripted event attached to this exchange, so we will make a note
+    // of if this is one or not
+
+    if (message.event) { hasEvent = true; }
+    var $target = $(document.getElementById(message.target));
+
+    setTimeout(function() {
+      if (message.event) {
+        events[message.event]();
+      } else {
+        showMessage($target, templates[message.type](message));
+      }
+    }, message.delay);
+
+    if (message.isFoil && message.delay > longestFoilDelay) {
+      longestFoilDelay = message.delay;
+    }
+  });
+
+  if (!hasEvent) {
+    setTimeout(bindPrompt, longestFoilDelay);
+  }
+}
+
 function sendMessage(clientMessage) {
   showMessage($('section.window.active'), templates.msg({
     origin: 'client',
@@ -41,34 +72,7 @@ function sendMessage(clientMessage) {
     data: {message: clientMessage},
     success: function(dataString) {
       var data = $.parseJSON(dataString);
-      var longestFoilDelay = 0;
-      var hasEvent = false;
-
-      $(data.messages).each(function(i, message) {
-
-        // we don't want to automatically show the prompt if there's a
-        // scripted event attached to this exchange, so we will make a note
-        // of if this is one or not
-
-        if (message.event) { hasEvent = true; }
-        var $target = $(document.getElementById(message.target));
-
-        setTimeout(function() {
-          if (message.event) {
-            events[message.event]();
-          } else {
-            showMessage($target, templates[message.type](message));
-          }
-        }, message.delay);
-
-        if (message.isFoil && message.delay > longestFoilDelay) {
-          longestFoilDelay = message.delay;
-        }
-      });
-
-      if (!hasEvent) {
-        setTimeout(bindPrompt, longestFoilDelay);
-      }
+      showMessages(data.messages);
     },
     error: function() {
       showStatusMessage('error sending message to server, please try again...');
