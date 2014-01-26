@@ -4,6 +4,14 @@
 @bg: #111;
 @indent: 8em;
 
+.vertical-gradient(@gradient) {
+  background: -moz-linear-gradient(top, @gradient);
+  background: -webkit-linear-gradient(top, @gradient);
+  background: -o-linear-gradient(top, @gradient);
+  background: -ms-linear-gradient(top, @gradient);
+  background: linear-gradient(to bottom, @gradient);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -110,16 +118,31 @@ body {
     z-index: 2;
     padding: 0 1em;
     font-size: .8em;
+    width: 100%;
+
+    &::before {
+      width: 100%;
+      content: '';
+      display: block;
+      pointer-events: none;
+      height: 5em;
+      margin-bottom: -5em;
+
+      .vertical-gradient(~"rgba(0,0,0,.8), rgba(0,0,0,0)");
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fafafa', endColorstr='#00fafafa',GradientType=0 );
+    }
 
     li {
       border-radius: 0 0 .2em .2em;
       padding: .5em;
       display: inline-block;
       cursor: pointer;
+      text-shadow: 0 .1em .1em @bg;
 
       &.active {
         background-color: @fg;
         color: @bg;
+        text-shadow: none;
         box-shadow: 0 0 .5em @bg;
       }
     }
