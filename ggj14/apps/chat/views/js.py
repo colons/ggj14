@@ -33,9 +33,16 @@ class ScriptView(View):
                 # and make it happen a little early
                 ms = abs(ms - 750 + (250 * random()))
 
+            if nick == 'STATUS':
+                # I know, i know, this whole thing should have been OO from the
+                # start. Sorry.
+                kind = 'status'
+            else:
+                kind = 'msg'
+
             messages.append({
                 'delay': ms,
-                'type': 'msg',
+                'type': kind,
                 'nick': nick or settings.FOIL_NAME,
                 'origin': 'server %s' % (nick or 'foil'),
                 'isFoil': not nick,

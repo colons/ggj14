@@ -39,7 +39,7 @@
 /c I mean
 /c They're on their way.
 /e lol
-<mika has joined the chat>
+<mika has joined #interboats>
 /m Hello?
 I have a secret, mika.
 /n That was quick.
@@ -53,7 +53,7 @@ Do you want to hear it?
 /n two
 Do you want to hear it?
 /m two?
-<mika has been kicked>
+<mika has been kicked from #interboats by Ymir>
 /c heh
 /o This is probably the busiest this place has ever been
 /n yep

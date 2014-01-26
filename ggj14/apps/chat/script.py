@@ -14,7 +14,7 @@ ALIASES = {
     'no': r'no|never|nope|naw|maybe|negative|negatory|nah|n',
     'greeting': r'hi|hello|sup|hey|ohayo',
     'else': r'.*',
-    'coke': 'coke|coca cola',
+    'coke': 'coke|cola',
     'dog': 'dogs?',
     'cat': 'cats?',
 }
@@ -51,6 +51,7 @@ def parse_script(string):
 
         for line in lines[1:]:
             nick = None
+            line = line.strip()
 
             if line.startswith('>'):
                 alias = line.split(':', 1)[0].lstrip('>').strip()
@@ -63,6 +64,10 @@ def parse_script(string):
                 else:
                     regex = ALIASES.get(alias, alias)
                     forks.append((regex, target))
+                continue
+
+            elif line.startswith('<') and line.endswith('>'):
+                messages.append(('STATUS', line[1:-1]))
                 continue
 
             elif line.startswith('*'):

@@ -1,6 +1,7 @@
 var events;
 var templates;
 var nick;
+var hasBeenKicked = false;
 
 var $channelWindow;
 var $queryWindow;
@@ -17,8 +18,10 @@ function scrollToBottom() {
 }
 
 function showMessage($target, html) {
-  $target.find('ul').append(html);
-  scrollToBottom();
+  if (!hasBeenKicked) {
+    $target.find('ul').append(html);
+    scrollToBottom();
+  }
 }
 
 function showStatusMessage(content, element) {
@@ -183,8 +186,9 @@ function connect() {
 
 // XXX events must rebind the prompt manually
 function getKicked() {
-  showStatusMessage("kicked from " + channelName + " by " + foilName);
+  showStatusMessage(nick + " was kicked from " + channelName + " by " + foilName);
   $('section.enabled').removeClass('enabled');
+  hasBeenKicked = true;
 }
 
 function foilQuit() {
