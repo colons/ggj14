@@ -1,0 +1,88 @@
+# initial
+...
+/c It's gone awfully quiet in here.
+/o Finally.
+/n Pretty sure this is a scam
+/n Probably getting his details taken
+/e lol
+/e maybe
+/t woof
+/o Who even owns Trenchfoot?
+/t woof
+/c No idea.
+/e You guys played Brothers?
+/c I haven't played it.
+/c But it seems like an important moment in video games and I wish I'd played it.
+/o Same
+/n Well then.
+/e You should go play it.
+/e You'd be hard pressed to find ten better games this year.
+/o Get out.
+/n Hey Colons, how is that game coming along?
+/c Passable. 
+/c The story is a bit dumb, so I'm currently hiding easter eggs.
+/e It is pretty dumb.
+/c I've also created a very elaborate ending
+/o How elaborate?
+/c Can't tell you. It's a secret. 
+/n It'd probably be better if you just got on with it
+/n and not spend all of your time in this dead IRC channel
+/c True
+/e You know what?
+/e We should play some Nidhogg
+/c Sure.
+/o I thought you were going to work on this game of yours?
+/c It's fine.
+/c We have plenty of time to finish it off.
+/o Where are your other team members?
+/c They never showed up. 
+/c I mean
+/c They're on their way.
+/e lol
+<mika has joined the chat>
+/m Hello?
+I have a secret, mika.
+/n That was quick.
+Do you want to hear it?
+/m No?
+/e Ymir isn't having much luck today lol
+/n one
+Do you want to hear it?
+/m No
+/c Aww.
+/n two
+Do you want to hear it?
+/m two?
+<mika has been kicked>
+/c heh
+/o This is probably the busiest this place has ever been
+/n yep
+/e oh, colons, nicked90
+/e don't watch the episode preview of Hunter
+/e spoilers
+/n again? great
+/c Noted
+/e it turns out /they are all ants/
+/o well thanks for that
+/e np
+/c have you ever considered that everyone is a robot?
+/o no
+/e deep
+/c no seriously. 
+/c everyone is a robot. even you. 
+/c you could just be simulating real life
+/o and real life is a dull irc channel?
+/n pretty much
+/e so if we're robots
+/e why can't we just throw Ymir out of this channel?
+/n you see the tilde on his name?
+/e yeah?
+/n well, let's just say that Ymir is many power levels above us all
+/c did you actually just say power levels?
+/e Trenchfoot
+/t woof
+/o seriously, if you're about to make the reference I think you're about to make, I'll break your legs
+/n I doubt he was actually going to do it
+/e sorry
+/n oh
+> else: initial

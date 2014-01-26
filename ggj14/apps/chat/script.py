@@ -25,6 +25,7 @@ USERS = {
     'n': 'NickEd90',
     'o': 'okänd',
     't': 'trenchfoot',
+    'm': 'mika',
 }
 
 
@@ -129,11 +130,12 @@ def parse_script(string):
     return exchanges
 
 
-PARTS = []
+PARTS = {}
 
-for part in ['part1.txt', 'part2.txt']:
+for key, part in [(1, 'part1.txt'), (2, 'part2.txt'),
+                  ('chatter', 'chatter.txt')]:
     with open(path.join(settings.BASE_DIR, 'scripts', part)) as script_file:
-        PARTS.append(parse_script(script_file.read().decode('utf-8')))
+        PARTS[key] = parse_script(script_file.read().decode('utf-8'))
 
 
 def get_next_exchange(script, current_slug, response):

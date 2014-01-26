@@ -28,7 +28,7 @@ function showStatusMessage(content, element) {
   showMessage(element, templates.status({content: content}));
 }
 
-function showMessages(messages) {
+function showMessages(messages, doNotRebindPrompt) {
   var longestFoilDelay = 0;
   var hasEvent = false;
 
@@ -54,7 +54,7 @@ function showMessages(messages) {
     }
   });
 
-  if (!hasEvent) {
+  if ((!hasEvent) && (!doNotRebindPrompt)) {
     setTimeout(bindPrompt, longestFoilDelay);
   }
 }
@@ -73,6 +73,7 @@ function sendMessage(clientMessage) {
     success: function(dataString) {
       var data = $.parseJSON(dataString);
       showMessages(data.messages);
+      showMessages(data.parallelMessages, true);
     },
     error: function() {
       showStatusMessage('error sending message to server, please try again...');

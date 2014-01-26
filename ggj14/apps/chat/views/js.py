@@ -9,11 +9,13 @@ from ggj14.apps.chat import script
 
 
 class ScriptView(View):
-    def messages_for_exchange(self, exchange):
-        if self.request.session['part'] == 2:
-            target = 'query'
-        else:
-            target = 'channel'
+    def messages_for_exchange(self, exchange, target=None,
+                              everyone_blocks=False):
+        if target is None:
+            if self.request.session['part'] == 2:
+                target = 'query'
+            else:
+                target = 'channel'
 
         messages = []
 
@@ -24,7 +26,7 @@ class ScriptView(View):
 
             ms = self.ms + (50 * len(message)) + 500 + (500 * random())
 
-            if nick is None:
+            if nick is None or everyone_blocks:
                 self.ms = ms
             else:
                 # if it's not the foil, we should randomise it a little more
@@ -61,6 +63,7 @@ class ScriptView(View):
         self.ms = 100 + (500 * random())
 
         messages = self.messages_for_exchange(exchange)
+        parallel_messages = []
 
         if exchange['event']:
             if exchange['event'] == 'part2':
@@ -70,6 +73,14 @@ class ScriptView(View):
                 new_exchange = self.get_script()[self.request.session['slug']]
                 messages = messages + self.messages_for_exchange(new_exchange)
 
+                blocked_ms = self.ms
+                self.ms = 0
+                parallel_messages = self.messages_for_exchange(
+                    self.get_script(part='chatter')['initial'], 'channel',
+                    everyone_blocks=True,
+                )
+                self.ms = blocked_ms
+
             self.ms += 500 + (500 * random())
             messages.append({
                 'delay': self.ms,
@@ -78,6 +89,7 @@ class ScriptView(View):
 
         return HttpResponse(ujson.dumps({
             'messages': messages,
+            'parallelMessages': parallel_messages,
         }))
 
 
@@ -93,8 +105,8 @@ class SetNickView(View):
 
 
 class DefaultScript(ScriptView):
-    def get_script(self):
-        return script.PARTS[self.request.session['part'] - 1]
+    def get_script(self, part=None):
+        return script.PARTS[part or self.request.session['part']]
 
 
 class CustomScript(ScriptView):
