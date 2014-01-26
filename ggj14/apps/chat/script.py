@@ -9,7 +9,7 @@ from django.core.exceptions import ValidationError
 ALIASES = {
     'yes': (
         r'yes|yep|yeah|sure|totally|of course|a little|ok|ya|probably|fine|'
-        r'okay|i guess|aye|yissir|kay|affirmative|completely'
+        r'okay|i guess|aye|yissir|kay|affirmative|completely|ye|y'
     ),
     'no': r'no|never|nope|naw|maybe|negative|negatory',
     'greeting': r'hi|hello|sup|hey|ohayo',
@@ -140,5 +140,7 @@ def get_next_exchange(script, current_slug, response):
     current_line = script[current_slug]
 
     for regex, slug in current_line['forks']:
-        if re.findall(r'\b(%s)\b' % regex, response, flags=re.IGNORECASE):
+        print 'trying %s' % regex
+        if re.findall(r'(\b|^)(%s)(\b|$)' % regex, response,
+                      flags=re.IGNORECASE):
             return slug
