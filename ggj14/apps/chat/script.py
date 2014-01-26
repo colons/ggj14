@@ -140,7 +140,6 @@ def get_next_exchange(script, current_slug, response):
     current_line = script[current_slug]
 
     for regex, slug in current_line['forks']:
-        print 'trying %s' % regex
         if re.findall(r'(\b|^)(%s)(\b|$)' % regex, response,
                       flags=re.IGNORECASE):
             return slug

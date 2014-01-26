@@ -21,8 +21,11 @@ function showMessage($target, html) {
   scrollToBottom();
 }
 
-function showStatusMessage(content) {
-  showMessage($('.window.active'), templates.status({content: content}));
+function showStatusMessage(content, element) {
+  if (element === undefined) {
+    element = $('.window.active');
+  }
+  showMessage(element, templates.status({content: content}));
 }
 
 function sendMessage(clientMessage) {
@@ -256,6 +259,7 @@ $(function() {
 
   $(window).resize(scrollToBottom);
   bindTabs();
+  showStatusMessage('Receiving query on irc.biz.ru:6697 from ' + foilName, $queryWindow);
 
   login();
 });
