@@ -569,8 +569,7 @@ Do you want to know my secret?
 # agree p3 q5
 Good.
 I think you are ready to see it.
-IMAGE HERE OR SUMMAT IDNO LOL XXX
-* leave
+* troll
 
 # finalfudge p3 q5
 [user], we've come this far and you don't want to know?

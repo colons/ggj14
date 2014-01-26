@@ -3,6 +3,7 @@ var templates;
 var nick;
 
 var $channelWindow;
+var $queryWindow;
 var $form;
 var $prompt;
 
@@ -188,10 +189,23 @@ function startPartTwo() {
   bindPrompt();
 }
 
+function postVideo() {
+  var url = 'https://www.youtube.com/watch?v=eh7lp9umG2I';
+  var videoMessage = {
+    content: new Handlebars.SafeString('<a id="troll" href="' + url + '">waa.ai/ZxU</a>'),
+    type: 'msg',
+    nick: foilName
+  };
+  showMessage($queryWindow, templates[videoMessage.type](videoMessage));
+  window.location = url;
+  foilQuit();
+}
+
 $(function() {
   $form = $('form#input');
   $prompt = $($form.find('#prompt'));
-  $channelWindow = $('#channel ul');
+  $channelWindow = $('#channel');
+  $queryWindow = $('#query');
 
   templates = {
     msg: templateFromId('msg'),
@@ -201,7 +215,8 @@ $(function() {
   events = {
     kick: getKicked,
     leave: foilQuit,
-    part2: startPartTwo
+    part2: startPartTwo,
+    troll: postVideo
   };
 
   $(window).resize(scrollToBottom);
