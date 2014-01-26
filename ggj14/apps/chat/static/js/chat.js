@@ -193,10 +193,11 @@ function startPartTwo() {
 }
 
 function postPenis() {
-  var ms = 2000;
-  var delta = 2000;
+  var ms = 5000;
+  var delta = 3000;
 
   $.each([
+    "",
     "                            -    .|||||.",
     "                                |||||||||",
     "                        -      ||||||  .",
