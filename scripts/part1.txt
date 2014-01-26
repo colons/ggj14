@@ -82,14 +82,14 @@ Do you prefer Coke or Pepsi?
 Sing a line from a song that you like.
 ...
 Have you done it?
+...
+/c LAAAAAH
 > yes: p1 q5
 > no: try again1 p1 q4
 > else: try again1 p1 q4
 
 # try again1 p1 q4
 Sing a line from a song that you like.
-/c LAAAAAH
-...
 /n AAAAAAAAAAAAAAAAAAH
 Have you done it?
 /e lol
@@ -113,6 +113,7 @@ Have you done it?
 Do you prefer dogs or cats?
 /t woof
 /o Stop saying dog.
+...
 /t woof
 > dog: p1 q6
 > cat: p1 q6
