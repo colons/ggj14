@@ -11,7 +11,9 @@ Will you answer my questions truthfully?
 > else: try again1 p2 q1
 
 # agree p2 q1
-Thank you. I will begin.
+Thank you.
+There is little time. You must be precise with your answers and I will not tolerate foolishness.
+I will begin.
 > null: p2 q2
 
 # disagree p2 q1
