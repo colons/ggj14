@@ -40,7 +40,6 @@ Do you prefer day or night?
 
 # try again1 p1 q2
 /e Evening
-...
 Do you prefer day or night?
 > day: p1 q3
 > night: p1 q3
@@ -92,7 +91,6 @@ Sing a line from a song that you like.
 /c LAAAAAH
 ...
 /n AAAAAAAAAAAAAAAAAAH
-...
 Have you done it?
 /e lol
 > yes: p1 q5
@@ -113,6 +111,8 @@ Have you done it?
 
 # p1 q5
 Do you prefer dogs or cats?
+/t woof
+/o Stop saying dog.
 /t woof
 > dog: p1 q6
 > cat: p1 q6
@@ -149,6 +149,7 @@ Do you still want to hear my secret?
 
 # try again1 p1 q6
 Do you still want to hear my secret?
+/e buuuuuuuuurned
 > yes: p2
 > no: try again2 p1 q6
 > else: try again2 p1 q6
