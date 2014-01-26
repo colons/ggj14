@@ -121,7 +121,7 @@ def parse_script(string):
         raise ValidationError('No "initial" exchange ID')
 
     for host_slug, exchange in exchanges.iteritems():
-        # XXX handle infinite loops
+        # XXX might want to handle infinite loops
         if not (exchange['forks'] or exchange['event']):
             raise ValidationError("There's no way out of the \"%s\" exchange"
                                   % host_slug)

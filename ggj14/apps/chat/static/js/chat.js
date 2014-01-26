@@ -174,7 +174,7 @@ function connect() {
     [10, ""],
     [900, "joined " + channelName],
     [50, "channel topic is: ヽ(`Д´)ノ"],
-    [100, "users: [~" + foilName + "] [&NickEd90] [@colons] [@EuricaeriS] [@okänd] [+trenchfoot] [ " + nick + "]"]  // XXX use actual name of our foil
+    [100, "users: [~" + foilName + "] [&NickEd90] [@colons] [@EuricaeriS] [@okänd] [+trenchfoot] [ " + nick + "]"]
   ];
   
   $.each(messages, function(i, thing) {
@@ -187,7 +187,6 @@ function connect() {
   setTimeout(bindPrompt, ms);
 }
 
-// XXX events must rebind the prompt manually
 function getKicked() {
   showStatusMessage(nick + " was kicked from " + channelName + " by " + foilName);
   $('section.enabled').removeClass('enabled');
