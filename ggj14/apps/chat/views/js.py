@@ -1,3 +1,4 @@
+import logging
 from random import random
 import ujson
 
@@ -6,6 +7,9 @@ from django.http import HttpResponse, HttpResponseBadRequest
 from django.views.generic import View
 
 from ggj14.apps.chat import script
+
+
+logger = logging.getLogger('interactions')
 
 
 class ScriptView(View):
@@ -64,6 +68,13 @@ class ScriptView(View):
             request.POST['message'],
         )
 
+        logger.info('{id} responds to {current}: {msg}\n'
+                    '{id} sent to: {target}'.format(
+                        id=request.session._session_key,
+                        current=current_slug,
+                        msg=request.POST['message'],
+                        target=slug))
+
         exchange = self.get_script()[slug]
         request.session['slug'] = slug
 
@@ -105,8 +116,12 @@ class SetNickView(View):
         nick = request.POST.get('nick')
 
         if nick is None or ' ' in nick or len(nick) > 11:
+            logger.info('{0} fails to set nick: {1}'.format(
+                request.session._session_key, nick))
             return HttpResponseBadRequest()
         else:
+            logger.info('{0} sets nick: {1}'.format(
+                request.session._session_key, nick))
             request.session['nick'] = nick
             return HttpResponse()
 

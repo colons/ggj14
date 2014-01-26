@@ -63,6 +63,25 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'interactions': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'interactions.log'),
+        },
+    },
+    'loggers': {
+        'interactions': {
+            'handlers': ['interactions'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+    },
+}
+
 
 # PIPELINE
 
