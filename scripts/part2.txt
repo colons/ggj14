@@ -218,104 +218,26 @@ But what if the end benefitted millions of people? Surely that is justification 
 # try again5 p2 q4
 A tough situation, sure, but this is merely theoretical. 
 What if the end benefitted millions of people?
-> yes: disagree agree p2 q4
-> no: disagree disagree p2 q4
 > else: try again6 p2 q4
 
 # try again6 p2 q4
-Goodbye. 
-* leave
+I understand. 
+> null: p2 q6
 
 # agree agree p2 q4
 Justification in numbers. A valid opinion. 
-> null: p2 q5
+> null: p2 q6
 
 # agree disagree p2 q4
 It would depend on the cost. Reasonable. 
-> null: p2 q5
+> null: p2 q6
 
 # disagree agree p2 q4
 Sounds to me that you disagree with the principal but are tempted by the figures.
-> null: p2 q5
+> null: p2 q6
 
 # disagree disagree p2 q4
 Incapable of sacrifice. I feel you may change your mind in the correct circumstances.
-> null: p2 q5
-
-# p2 q5
-Fourth question.
-Are there people that do not deserve democracy?
-> yes: agree p2 q5
-> no: disagree p2 q5
-> else: try again1 p2 q5
-
-# try again1 p2 q5
-Maybe some people aren't smart enough.
-Maybe some people don't deserve it.
-Are there people that do not deserve democracy?
-> yes: agree p2 q5
-> no: disagree p2 q5
-> else: try again2 p2 q5
-
-# try again2 p2 q5
-Goodbye. 
-* leave
-
-# agree p2 q5
-So it's fine to block some out of democracy when others knowingly use it to fulfil selfish, short-term interests?
-> yes: agree agree p2 q5
-> no: agree disagree p2 q5
-> else: try again3 p2 q5
-
-# try again3 p2 q5
-Don't deviate now. 
-Answer the question.
-Is it okay to restrict democracy when it is being abused anyway?
-> yes: agree agree p2 q5
-> no: agree disagree p2 q5
-> else: try again4 p2 q5
-
-# try again4 p2 q5
-Goodbye. 
-* leave
-
-# disagree p2 q5
-But what about prisoners who have waived their rights?
-Politicians who act for their own benefit?
-Are there not at least some people that have surrendered their right to democracy?
-> yes: disagree agree p2 q5
-> no: disagree disagree p2 q5
-> else: try again5 p2 q5
-
-# try again5 p2 q5
-Don't waste my time, [user].
-I just need a 'yes' or 'no' answer.  
-Have some people surrendered their right to democracy?
-> yes: disagree agree p2 q5
-> no: disagree disagree p2 q5
-> else: try again6 p2 q5
-
-# try again6 p2 q5
-Goodbye. 
-* leave
-
-# agree agree p2 q5
-Indeed, you have to start somewhere. 
-> null: p2 q6
-
-# agree disagree p2 q5
-Prioritising the biggest issue. 
-Understandable.
-> null: p2 q6
-
-# disagree agree p2 q5
-You contradict yourself.
-Or perhaps you've changed your stance?
-> null: p2 q6
-
-# disagree disagree p2 q5
-So you think everyone deserves democracy?
-An interesting view.
 > null: p2 q6
 
 # p2 q6
