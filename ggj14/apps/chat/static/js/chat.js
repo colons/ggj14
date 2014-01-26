@@ -192,16 +192,47 @@ function startPartTwo() {
   bindPrompt();
 }
 
-function postVideo() {
-  var url = 'https://www.youtube.com/watch?v=eh7lp9umG2I';
-  var videoMessage = {
-    content: new Handlebars.SafeString('<a id="troll" href="' + url + '">waa.ai/ZxU</a>'),
-    type: 'msg',
-    nick: foilName
-  };
-  showMessage($queryWindow, templates[videoMessage.type](videoMessage));
-  window.location = url;
-  foilQuit();
+function postPenis() {
+  var ms = 2000;
+  var delta = 2000;
+
+  $.each([
+    "                            -    .|||||.",
+    "                                |||||||||",
+    "                        -      ||||||  .",
+    "                            -  ||||||   >",
+    "                              ||||||| -/",
+    "                         --   ||||||'(",
+    "                      -       .'      \\",
+    "                           .-'    | | |",
+    "                          /        \\ \\ \\",
+    "            --        -  |      `---:.`.\\",
+    "           ____________._>           \\\\_\\\\____ ,--.__    ",
+    "--    ,--\"\"           /    `-   .     |)_)    '\\     '\\  ",
+    "     /  \"             |      .-'     /          \\      '\\",
+    "   ,/                  \\           .'            '\\     |",
+    "   | \"   \"   \"          \\         /                '\\,  /",
+    "   |           \" , =_____`-.   .-'_________________,--\"\" ",
+    " - |  \"    \"    /\"/'      /\\>-' ( <",
+    "   \\  \"      \",/ /    -  ( <    |\\_)",
+    "    \\   \",\",_/,-'        |\\_)",
+    " -- -'-;.__:-'",
+    ""
+  ], function(i, line) {
+    setTimeout(function() {
+      var videoMessage = {
+        content: line,
+        type: 'msg',
+        nick: foilName,
+        origin: 'server foil'
+      };
+      showMessage($queryWindow, templates[videoMessage.type](videoMessage));
+    }, ms);
+    ms += delta;
+    delta = delta * 0.8;
+  });
+
+  setTimeout(foilQuit, ms);
 }
 
 $(function() {
@@ -219,7 +250,7 @@ $(function() {
     kick: getKicked,
     leave: foilQuit,
     part2: startPartTwo,
-    troll: postVideo
+    troll: postPenis
   };
 
   $(window).resize(scrollToBottom);
