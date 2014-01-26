@@ -133,7 +133,7 @@ PARTS = []
 
 for part in ['part1.txt', 'part2.txt']:
     with open(path.join(settings.BASE_DIR, 'scripts', part)) as script_file:
-        PARTS.append(parse_script(script_file.read()))
+        PARTS.append(parse_script(script_file.read().decode('utf-8')))
 
 
 def get_next_exchange(script, current_slug, response):
