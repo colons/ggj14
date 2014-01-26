@@ -8,8 +8,8 @@ from django.core.exceptions import ValidationError
 
 ALIASES = {
     'yes': (
-        r'yes|yep|yeah|sure|totally|of course|a little|ok|ya|probably|fine|'
-        r'okay|i guess|aye|yissir|kay|affirmative|completely|ye|y|why not'
+        r'yes|yep|yeah?|sure|totally|of course|a little|ok|ya|probably|fine|'
+        r'okay|i guess|aye|yissir|kay|affirmative|completely|ye|y|why not|yh'
     ),
     'no': r'no|never|nope|naw|maybe|negative|negatory|nah|n',
     'greeting': r'hi|hello|sup|hey|ohayo',
