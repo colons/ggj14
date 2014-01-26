@@ -85,7 +85,7 @@ class SetNickView(View):
     def post(self, request, *args, **kwargs):
         nick = request.POST.get('nick')
 
-        if nick is None:
+        if nick is None or ' ' in nick or len(nick) > 11:
             return HttpResponseBadRequest()
         else:
             request.session['nick'] = nick

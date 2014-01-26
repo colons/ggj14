@@ -136,7 +136,10 @@ function login() {
       url: setNickURL,
       data: {nick: nick},
       success: connect,
-      error: login
+      error: function() {
+        showStatusMessage('come now, be reasonable');
+        login();
+      }
     });
   });
 }
