@@ -31,9 +31,10 @@ function showStatusMessage(content, element) {
   showMessage(element, templates.status({content: content}));
 }
 
-function showMessages(messages, doNotRebindPrompt) {
+function showMessages(messages, rebindPrompt) {
   var longestFoilDelay = 0;
   var hasEvent = false;
+  var lastTarget;
 
   $(messages).each(function(i, message) {
 
@@ -43,6 +44,7 @@ function showMessages(messages, doNotRebindPrompt) {
 
     if (message.event) { hasEvent = true; }
     var $target = $(document.getElementById(message.target));
+    lastTarget= $target;
 
     setTimeout(function() {
       if (message.event) {
@@ -57,8 +59,8 @@ function showMessages(messages, doNotRebindPrompt) {
     }
   });
 
-  if ((!hasEvent) && (!doNotRebindPrompt)) {
-    setTimeout(bindPrompt, longestFoilDelay);
+  if ((!hasEvent) && rebindPrompt) {
+    setTimeout(function() {enablePromptOnWindow(lastTarget);}, longestFoilDelay);
   }
 }
 
@@ -75,8 +77,8 @@ function sendMessage(clientMessage) {
     data: {message: clientMessage},
     success: function(dataString) {
       var data = $.parseJSON(dataString);
-      showMessages(data.messages);
-      showMessages(data.parallelMessages, true);
+      showMessages(data.messages, true);
+      showMessages(data.parallelMessages);
     },
     error: function() {
       showStatusMessage('error sending message to server, please try again...');
@@ -116,6 +118,7 @@ function bindPrompt(func) {
     }
 
     $prompt.val('');
+    $('section.window').removeClass('enabled');
     unbindPrompt();
 
     if (func === undefined) {
@@ -196,12 +199,18 @@ function foilQuit() {
   $('section.enabled').removeClass('enabled');
 }
 
+function enablePromptOnWindow($window) {
+  $('section.window').removeClass('enabled');
+  $window.addClass('enabled');
+  if ($('section.window.active').hasClass('enabled')) {
+    bindPrompt();
+  }
+}
+
 function startPartTwo() {
   $('#tabs').slideDown();
-  $('section.window').removeClass('enabled');
+  enablePromptOnWindow($('section.window#query'));
   $('#tabs li[data-target=query]').click();
-  $('section.window#query').addClass('enabled');
-  bindPrompt();
 }
 
 function postPenis() {
