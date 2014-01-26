@@ -320,7 +320,7 @@ An interesting view.
 
 # p2 q6
 Final question.
-Are there some people that are such a burden that they are better off gone?
+Are there some people that are such a burden that they are better off dead?
 > yes: agree p2 q6
 > no: disagree p2 q6
 > else: try again1 p2 q6
