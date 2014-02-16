@@ -15,7 +15,7 @@ python manage.py syncdb
 python manage.py runserver
 ```
 
-[logo]: https://raw.github.com/colons/ggj14/master/logo.gif
+[logo]: https://github.com/colons/ggj14/raw/master/logo.gif
 [trailer]: http://youtu.be/ED4oib6O02k
 [ggj]: http://globalgamejam.org/2014/games/conversation-ymir
 [play]: http://ggj14.colons.co
