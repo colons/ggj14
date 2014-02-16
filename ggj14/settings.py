@@ -124,4 +124,7 @@ PIPELINE_JS = {
 FOIL_NAME = 'Ymir'
 CHANNEL_NAME = '#interboats'
 
-from settings_local import *  # NOQA
+try:
+    from settings_local import *  # NOQA
+except ImportError:
+    print 'no local settings provided; using defaults'
