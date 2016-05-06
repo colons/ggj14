@@ -2,9 +2,8 @@
 
 # A Conversation with Ymir
 
-An [entry][ggj] in Global Game Jam 2014, by Very Scary Scenario (Chris Walden,
-Alexander Rennerfelt, Nicholas Edwards and Iain Dawson). There's a
-[trailer][trailer], too, if you need to be convinced.
+An [entry][ggj] in Global Game Jam 2014, by [Very Scary Scenario][vss]. There's
+a [trailer][trailer], too, if you need to be convinced.
 
 You can play at [ggj14.colons.co][play].
 
@@ -41,6 +40,7 @@ python manage.py runserver
 TODO (gotta find a windows box)
 
 [logo]: https://github.com/colons/ggj14/raw/master/logo.gif
+[vss]: https://vscary.co/
 [trailer]: http://youtu.be/ED4oib6O02k
 [ggj]: http://globalgamejam.org/2014/games/conversation-ymir
 [play]: http://ggj14.colons.co
